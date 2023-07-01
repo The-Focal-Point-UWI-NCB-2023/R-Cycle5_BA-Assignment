@@ -1,0 +1,24 @@
+## Jobs & Deposits {.unlisted .unnumbered}
+* Which categories of jobs have the highest and lowest average deposits?
+
+## Jobs & Education Level {.unlisted .unnumbered}
+* What is the dominant educational level of each category of job?
+
+## Mortgage & Personal Loans {.unlisted .unnumbered}
+* What percentage of persons have both mortgage and personal loan?
+
+## Age & Highest Balance {.unlisted .unnumbered}
+* Which age-group has the highest average balance?
+
+## Married & Overdraft {.unlisted .unnumbered}
+* What percentage of customers who are married also are in overdraft?
+
+## Deposit & Balance {.unlisted .unnumbered}
+* Is there a correlation between deposit and balance? Discuss the findings. Explain the implications.
+
+## Deposit {.unlisted .unnumbered}
+* Plot time-series graph(s) to show comparison between deposits made over 2 comparative periods within the data (month/quarter). Interpret and discuss the result.
+
+## Least Credit Risk {.unlisted .unnumbered}
+* If the Bank wanted to launch a new loan product to target persons who may be considered to have the least credit risk, propose a metric to determine these persons. Use at least 3 features to justify/select your target profile. Example: RefNum < X AND Married=T AND education==”Tertiary” Risk=Low.
+* Be prepared to explain why you made the decision on the variables used for determining the best person to target. This may be helped by investigating what banks generally use.

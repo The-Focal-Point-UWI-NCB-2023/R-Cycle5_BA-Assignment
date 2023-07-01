@@ -1,0 +1,44 @@
+---
+title: "Data Science"
+author: "The Focal Point"
+date: "`r Sys.Date()`"
+output: 
+  powerpoint_presentation: 
+    reference_doc: reference.pptx
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+if (packageVersion('rmarkdown') <= '1.9') {
+  install.packages('rmarkdown')  # update rmarkdown from CRAN
+}
+```
+
+# Background
+
+```{r child='./slides/Background/Background.rmd'}
+```
+
+# Data Collection
+
+```{r, echo=FALSE, results='hide'}
+data <- read.csv(file='./dataset.csv', stringsAsFactors = TRUE)
+```
+
+# Data Preparation & Cleaning
+
+```{r child='./slides/DataPreparation/DataPreparation.rmd'}
+```
+
+# Cleaned Data
+
+```{r, echo=FALSE, results='hide'}
+source('./scripts/prepData.R')
+parsedData <- NULL
+```
+
+# Data Analysis
+
+```{r child='./slides/DataAnalysis/DataAnalysis.rmd'}
+```
