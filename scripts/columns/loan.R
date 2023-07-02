@@ -1,14 +1,14 @@
-loan.col <- read.csv(file=file.choose())
-View(loan.col)
+
+View(data)
 
 #Checking For Empty Rows
-empty_rows <- is.na(loan.col$loan)
+empty_rows <- is.na(data$loan)
 sum(empty_rows)
 
 #Checking For Spaces
-space_in_row <- grepl("\\s", loan.col$loan)
+space_in_row <- grepl("\\s", data$loan)
 sum(space_in_row)
 
 #Check if all rows have the correct category
-all(loan.col$loan == "yes" | loan.col$loan == "no")
+all(data$loan == "yes" | data$loan == "no")
 
