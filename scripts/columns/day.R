@@ -47,7 +47,7 @@ for (i in 1:nrow(data)) {
 non.numeric <- any(!is.numeric(data$day))
 
 # Print the result
-if (has_non_numeric) {
+if (non.numeric) {
   cat("The column contains non-numeric values.")
 } else {
   cat("The column does not contain any non-numeric values.")
