@@ -53,6 +53,9 @@ if (non.numeric) {
   cat("The column does not contain any non-numeric values.")
 }
 
+#Remove Date Column
+data$date <- NULL
+
 
 
 

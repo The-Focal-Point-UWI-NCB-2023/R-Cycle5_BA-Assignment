@@ -1,12 +1,10 @@
-df <- read.csv(file = file.choose(),stringsAsFactors = TRUE)
-
 #Viewing the number of unique values within the column (Should be 2 (Yes and NO))
-length(unique(df$marital)) #= 3
+length(unique(data$marital)) #= 3
 
 #Counting Empty Spaces 
-sum(df$marital == "")
+sum(data$marital == "")
 
 #Counting Na values
-sum(is.na(df$marital))
+sum(is.na(data$marital))
 
 #No cleaning Required

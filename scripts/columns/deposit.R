@@ -23,7 +23,10 @@ data$avg_deposit <- NULL
 #data$avg_balance <- NULL
 
 #After Cleaning
-View(data)
+#View(data)
+avg.job.deposit <- NULL
+avg.job.balance <- NULL
 boxplot(data)
 str(data)
 summary(data)
+d <- NULL

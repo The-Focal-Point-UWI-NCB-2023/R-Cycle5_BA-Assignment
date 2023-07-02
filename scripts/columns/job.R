@@ -10,7 +10,6 @@ jobPreClean <- data$job
 #plot(hist(as.numeric(jobPreClean)))
 
 levels(jobPreClean)
-View(data)
 
 # Replace blank values with average per job
 # For each blank job get the balance
@@ -32,6 +31,7 @@ for (row in empty_rows) {
   data$job[row] <- closestMatch
 }
 empty_rows <- NULL
+avgBalancePerJob <- NULL
 
 # Remove empty factor levels
 data$job <- droplevels(data$job)

@@ -1,6 +1,6 @@
 str(data)
 summary(data)
-View(data)
+#View(data)
 options("scipen"=100, digits = 22)
 
 boxplot(data)
@@ -13,6 +13,8 @@ data$balance <- ifelse(data$balance > 668520, as.integer(data$avg_balance), data
 data$avg_balance <- NULL
 count <- sum(data$balance > 668520)
 print(paste("Number of rows where balance is higher than 668520:", count))
+
+avg.job.balance <- NULL
 
 #View(data)
 
