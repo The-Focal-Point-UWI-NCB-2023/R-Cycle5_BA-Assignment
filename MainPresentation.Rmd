@@ -4,7 +4,9 @@ author: "The Focal Point"
 date: "`r Sys.Date()`"
 output:
     revealjs::revealjs_presentation:
-      theme: moon
+      navigationMode: linear
+      theme: league
+      highlight: zenburn
       footer: "The Focal Point (2023)"
       transition: "slide"
 ---
@@ -41,8 +43,6 @@ barplot(data$balance)
 
 ```{r child='./slides/DataPreparation/DataPreparation.rmd'}
 ```
-
-# Cleaned Data
 
 # Data Analysis
 
