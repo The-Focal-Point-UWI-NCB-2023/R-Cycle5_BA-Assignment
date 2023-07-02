@@ -2,16 +2,25 @@
 title: "Data Science"
 author: "The Focal Point"
 date: "`r Sys.Date()`"
-output: 
-  powerpoint_presentation: 
-    reference_doc: reference.pptx
-    toc: yes
+output:
+    revealjs::revealjs_presentation:
+      navigationMode: linear
+      theme: league
+      highlight: zenburn
+      footer: "The Focal Point (2023)"
+      transition: "slide"
 ---
 
 ```{r setup, include=FALSE}
+# Templates : https://codingclubuc3m.rbind.io/post/2019-09-24/
+# RevealJS Docs : https://revealjs.com/themes/
+
 knitr::opts_chunk$set(echo = FALSE)
 if (packageVersion('rmarkdown') <= '1.9') {
   install.packages('rmarkdown')  # update rmarkdown from CRAN
+}
+if (packageVersion('revealjs') <= '0.8') {
+  install.packages('revealjs')  # update rmarkdown from CRAN
 }
 ```
 
@@ -26,16 +35,13 @@ if (packageVersion('rmarkdown') <= '1.9') {
 data <- read.csv(file='./dataset.csv', stringsAsFactors = TRUE)
 ```
 
+```{r}
+barplot(data$balance)
+```
+
 # Data Preparation & Cleaning
 
 ```{r child='./slides/DataPreparation/DataPreparation.rmd'}
-```
-
-# Cleaned Data
-
-```{r, echo=FALSE, results='hide'}
-source('./scripts/prepData.R')
-parsedData <- NULL
 ```
 
 # Data Analysis
