@@ -17,46 +17,47 @@ avg_balance <- df %>%
   group_by(education) %>%
   summarize(avg_balance = mean(balance, na.rm = TRUE))
 
+#attach(avg_balance)
 
-#Still working on this
-
-
-vectorDiff <- (avg_balance - balance)
-
-
-cleanDf <- mutate(education = )
-#df <- df %>%
-  #mutate(education = if_else(education == "", 
-                             #avg_balance[which.min(abs(avg.balance$avg.balance - balance))], 
-                            # education))
-
-attach(avg_balance)
-
-df <- df %>%
+tempdf <- df %>%
   mutate(
-    tertiary_diff = balance - avg_balance$avg_balance[3],
-    secondary_diff = balance - avg_balance$avg_balance[2],
-    primary_diff = balance - avg_balance$avg_balance[1]
+    tertiary_diff = abs(balance - avg_balance$avg_balance[3]),
+    secondary_diff = abs(balance - avg_balance$avg_balance[2]),
+    primary_diff = abs(balance - avg_balance$avg_balance[1])
   )
 
-#df <- df %>%
-  #rowwise() %>%
-  #mutate(
-    #lowest_diff = if_else(
-      #tertiary_diff <= secondary_diff & tertiary_diff <= primary_diff,
-      #3,
-      #if_else(
-        #secondary_diff <= primary_diff,
-        #2,
-        #1
-      #)
-    #)
-  #)
+tempdf <- tempdf %>%
+  rowwise() %>%
+  mutate(
+    education = if_else(
+      education == "",
+      if_else(
+        tertiary_diff <= secondary_diff & tertiary_diff <= primary_diff,
+        "tertiary",
+        if_else(
+          secondary_diff <= primary_diff,
+          "secondary",
+          "primary"
+        )
+      ),
+      education
+    )
+    )
 
-#df$lowest_diff <- NULL
+# Removing temporary fields
+tempdf$tertiary_diff <- NULL
+tempdf$secondary_diff <- NULL
+tempdf$primary_diff <- NULL
 
-#df <- df %>%
-  #mutate(closest_avg = max.col(-abs(avg_balance - balance)))
+#Assigning temp back to main df
+df <-tempdf
+
+# Checking sum of each category
+sum(df$education == "primary")
+sum(df$education == "secondary")
+sum(df$education == "tertiary")
+  
+
 
 
 
