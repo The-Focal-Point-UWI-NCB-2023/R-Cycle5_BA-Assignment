@@ -25,3 +25,5 @@ data$age[data$age > 60] <- 60
 # Post Clean Visualization
 plot(density(data$age))
 plot(hist(data$age))
+
+# Discretize Age
