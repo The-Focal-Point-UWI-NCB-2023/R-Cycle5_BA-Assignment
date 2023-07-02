@@ -14,9 +14,24 @@ View(data)
 
 # Replace blank values with average per job
 # For each blank job get the balance
-# Insert the job where the balance matches the closest balance average
-avgBalancePerJob <- aggregate(data$balance, list(data$job), FUN=mean, na.rm = TRUE)
 
+#Select all the rows which are empty
+empty_rows <- which(data$job == "")
+#Find the average balance of a person based on their job
+avgBalancePerJob <- aggregate(data$balance, list(data$job), FUN = mean, na.rm = TRUE)
+#View(avgBalancePerJob)
+
+#print(empty_rows)
+#Loop over empty rows, selecting the closest Job match based on their balance and the average Job Balance
+for (row in empty_rows) {
+  closestMatch <- avgBalancePerJob$Group.1[which.min(abs(data$balance[row] - avgBalancePerJob$x))]
+  print(paste("Row:", row))
+  print(paste("Current Balance:",data$balance[row]))
+  print(paste("Current Value:", data$job[row]))
+  print(paste("Closest Match:", closestMatch))
+  data$job[row] <- closestMatch
+}
+empty_rows <- NULL
 
 # Remove empty factor levels
 data$job <- droplevels(data$job)
