@@ -10,3 +10,7 @@ sum(is.na(data$housing))
 #Cleaning Empty Spaces by deletion as there is no other option to infer the values
 data <- data[data$housing != "",]
 
+# Remove empty factor levels
+data$housing <- droplevels(data$housing)
+levels(data$housing)
+
