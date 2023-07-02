@@ -28,7 +28,7 @@ names(months) = month.name
 data$date <- as.Date(paste(months[str_to_title(data$month)], data$day, sep = "-"), format = "%m-%d")
 
 
-# Print rows with non-date values in a specific column
+# Print rows with non-date values 
 
 for (i in 1:nrow(data)) {
   if (!inherits(data$date[i],"Date")) {
