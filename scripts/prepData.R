@@ -1,3 +1,7 @@
+rm(list=ls())
+
+library(ggplot2)
+
 # Project Path 
 path <- "./scripts/columns/"
 
