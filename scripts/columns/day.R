@@ -19,13 +19,6 @@ if (non.numeric) {
 }
 
 
-# Print the result
-if (non.numeric) {
-  cat("The column contains non-numeric values.")
-} else {
-  cat("The column does not contain any non-numeric values.")
-}
-
 
 #check if a month is invalid using is Date
 months = 1:12
