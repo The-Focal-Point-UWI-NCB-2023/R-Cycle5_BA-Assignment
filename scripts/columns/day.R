@@ -40,7 +40,7 @@ for (i in 1:nrow(data)) {
     fixed.date <- as.Date(paste(months[str_to_title(data$month[i])], 1, sep = "-"), format = "%m-%d")
     end.of.month <- lubridate::ceiling_date(fixed.date, "month") - 1
     last.day <- format(end.of.month,format ='%d')
-    data$day[i] <- last.day
+    data$day[i] <- as.integer(last.day)
     data$date[i] <- end.of.month
   }
   
@@ -57,6 +57,15 @@ for (i in which(na_rows)) {
 
 #Remove Date Column
 data$date <- NULL
+
+
+if (sum(na_rows)== 0) {
+  data$date <- NULL
+  c("No errors in data and date column deleted")
+}else{
+  c("Manually Recheck Script and DataSet")
+}
+
 
 
 
