@@ -1,5 +1,4 @@
 library(stringr)
-
 #Checking For Empty Rows
 empty_rows <- is.na(data$day)
 sum(empty_rows)
@@ -8,9 +7,16 @@ sum(empty_rows)
 space_in_row <- grepl("\\s", data$day)
 sum(space_in_row)
 
+
 # Check for non-numeric values 
-non.numeric <- all(!is.numeric(data$day))
-print(non.numeric)
+non.numeric <- any(!is.numeric(data$day))
+
+# Print the result
+if (non.numeric) {
+  cat("The column contains non-numeric values.")
+} else {
+  cat("The column does not contain any non-numeric values.")
+}
 
 
 # Print the result
@@ -28,30 +34,44 @@ names(months) = month.name
 data$date <- as.Date(paste(months[str_to_title(data$month)], data$day, sep = "-"), format = "%m-%d")
 
 
-# Print rows with non-date values 
+# Check and print rows with NA values in a specific column FIRST CHECK
+na_rows <- is.na(data$date)
+
+# Print the rows with NA values
+for (i in which(na_rows)) {
+  cat("Row", i, "contains an NA value in column", "column_name", "\n")
+}
 
 for (i in 1:nrow(data)) {
-  if (!inherits(data$date[i],"Date")) {
-    cat("Row", i, "contains a non-date value:", data$date[i], "\n")
+  if(is.na(data$date[i])){
+    fixed.date <- as.Date(paste(months[str_to_title(data$month[i])], 1, sep = "-"), format = "%m-%d")
+    end.of.month <- lubridate::ceiling_date(fixed.date, "month") - 1
+    last.day <- format(end.of.month,format ='%d')
+    data$day[i] <- last.day
+    data$date[i] <- end.of.month
   }
-  if(i == nrow(data)){
-    cat("There are no missing or invalid dates.")
-    data$daye <- NULL
-    }
-    
+  
+  
+}
+
+# Check and print rows with NA values in a specific column FINAL CHECK
+na_rows <- is.na(data$date)
+
+# Print the rows with NA values
+for (i in which(na_rows)) {
+  cat("Row", i, "contains an NA value in column", "column_name", "\n")
 }
 
 
 
-# Check for non-numeric values 
-non.numeric <- any(!is.numeric(data$day))
 
-# Print the result
-if (non.numeric) {
-  cat("The column contains non-numeric values.")
-} else {
-  cat("The column does not contain any non-numeric values.")
-}
+
+
+
+
+
+
+
 
 
 
