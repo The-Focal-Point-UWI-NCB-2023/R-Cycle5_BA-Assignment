@@ -1,6 +1,3 @@
-
-View(data)
-
 #Checking For Empty Rows
 empty_rows <- is.na(data$loan)
 sum(empty_rows)

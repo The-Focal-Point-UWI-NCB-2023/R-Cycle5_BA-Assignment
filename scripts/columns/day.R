@@ -9,10 +9,12 @@ space_in_row <- grepl("\\s", data$day)
 sum(space_in_row)
 
 # Check for non-numeric values 
-non.numeric <- any(!is.numeric(data$day))
+non.numeric <- all(!is.numeric(data$day))
+print(non.numeric)
+
 
 # Print the result
-if (has_non_numeric) {
+if (non.numeric) {
   cat("The column contains non-numeric values.")
 } else {
   cat("The column does not contain any non-numeric values.")
@@ -25,12 +27,21 @@ names(months) = month.name
 
 data$date <- as.Date(paste(months[str_to_title(data$month)], data$day, sep = "-"), format = "%m-%d")
 
-if(any(is.na(data$date))){
-  cat("There are missing or invalid dates.")
-}else{
-  cat("There are no missing or invalid dates.")
-  data$date <- NULL
+
+# Print rows with non-date values in a specific column
+
+for (i in 1:nrow(data)) {
+  if (!inherits(data$date[i],"Date")) {
+    cat("Row", i, "contains a non-date value:", data$date[i], "\n")
+  }
+  if(i == nrow(data)){
+    cat("There are no missing or invalid dates.")
+    data$daye <- NULL
+    }
+    
 }
+
+
 
 # Check for non-numeric values 
 non.numeric <- any(!is.numeric(data$day))
