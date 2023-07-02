@@ -27,9 +27,9 @@ plot(density(data$age))
 plot(hist(data$age))
 
 # Discretize Age (Using Equal Frequency Binning)
-L <- min(data$age)
-H <- max(data$age)
-N <- 4
+L <- min(data$age) # 20
+H <- max(data$age) # 60
+N <- 4 # 4 Groups from Histogram
 IW <- ((H-L)/N) # 10
 
 data$temp <- data$age
