@@ -26,4 +26,23 @@ data$age[data$age > 60] <- 60
 plot(density(data$age))
 plot(hist(data$age))
 
-# Discretize Age
+# Discretize Age (Using Equal Frequency Binning)
+L <- min(data$age)
+H <- max(data$age)
+N <- 4
+IW <- ((H-L)/N) # 10
+
+data$temp <- data$age
+
+# Convert to groups as factor
+age.groups <- c("20-29", "30-39", "40-49", "50-60") 
+data$age <- as.factor(ifelse(
+  data$temp < 60,
+  age.groups[floor(((data$temp/10) - 1))], age.groups[4]
+))
+
+# Visualization (Before|After)
+hist(data$temp, main = "Age Before Discritization")
+barplot(table(data$age), main = "Age After Discritization")
+
+data$temp <- NULL
