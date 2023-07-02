@@ -19,12 +19,44 @@ avg_balance <- df %>%
 
 
 #Still working on this
+
+
+vectorDiff <- (avg_balance - balance)
+
+
+cleanDf <- mutate(education = )
 #df <- df %>%
   #mutate(education = if_else(education == "", 
                              #avg_balance[which.min(abs(avg.balance$avg.balance - balance))], 
                             # education))
 
+attach(avg_balance)
 
+df <- df %>%
+  mutate(
+    tertiary_diff = balance - avg_balance$avg_balance[3],
+    secondary_diff = balance - avg_balance$avg_balance[2],
+    primary_diff = balance - avg_balance$avg_balance[1]
+  )
+
+#df <- df %>%
+  #rowwise() %>%
+  #mutate(
+    #lowest_diff = if_else(
+      #tertiary_diff <= secondary_diff & tertiary_diff <= primary_diff,
+      #3,
+      #if_else(
+        #secondary_diff <= primary_diff,
+        #2,
+        #1
+      #)
+    #)
+  #)
+
+#df$lowest_diff <- NULL
+
+#df <- df %>%
+  #mutate(closest_avg = max.col(-abs(avg_balance - balance)))
 
 
 
