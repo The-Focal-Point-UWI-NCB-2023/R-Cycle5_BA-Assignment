@@ -10,11 +10,11 @@ path <- "./scripts/columns/"
 # Read Data (Normalize one feature in the dataset. Justify your decision.)
 data <- read.csv(file='./dataset.csv', stringsAsFactors = TRUE)
 
-# Prep job
-source(paste(path,"job.R", sep=""))
-
 # Prep balance
 source(paste(path,"balance.R", sep=""))
+
+# Prep job
+source(paste(path,"job.R", sep=""))
 
 # Prep deposit
 source(paste(path,"deposit.R", sep=""))

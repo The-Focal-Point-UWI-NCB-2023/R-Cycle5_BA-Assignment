@@ -26,11 +26,19 @@ if(levels == rows) {
 
 -   Nominal Measurement (No order)
 
-## Age {.unlisted .unnumbered}
+## Balance {.unlisted .unnumbered}
 
 -   Test
 
 ## Job {.unlisted .unnumbered}
+
+-   Test
+
+## Deposit {.unlisted .unnumbered}
+
+-   Test
+
+## Age {.unlisted .unnumbered}
 
 -   Test
 
@@ -66,10 +74,6 @@ if(levels == rows) {
 
 -   Test
 
-## Deposit {.unlisted .unnumbered}
-
--   Test
-
-## Balance {.unlisted .unnumbered}
+## Last Deposit
 
 -   Test
