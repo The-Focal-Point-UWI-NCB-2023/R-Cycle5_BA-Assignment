@@ -2,7 +2,8 @@
 min.balance <- min(data$balance, na.rm = T) # Setting Min Value
 max.balance <- max(data$balance, na.rm = T) # Setting Max value
 
-new.min <- -252 # Setting new min value for normalized Data to 1
+# Original 252
+new.min <- -112 # Setting new min value for normalized Data to 1
 new.max <- 669 # Setting new max value for normalized Data to 100
 
 
