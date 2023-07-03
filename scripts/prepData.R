@@ -5,10 +5,10 @@ library(lubridate)
 library(dplyr)
 
 # Project Path 
-path <- "./scripts/columns/"
+path <- "/Users/brandonhall/Documents/R/R-Cycle5_BA-Assignment/scripts/columns/"
 
 # Read Data (Normalize one feature in the dataset. Justify your decision.)
-data <- read.csv(file='./dataset.csv', stringsAsFactors = TRUE)
+data <- read.csv(file='/Users/brandonhall/Documents/R/R-Cycle5_BA-Assignment/dataset.csv', stringsAsFactors = TRUE)
 
 # Prep job
 source(paste(path,"job.R", sep=""))
