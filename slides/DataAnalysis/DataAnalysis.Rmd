@@ -2,31 +2,79 @@
 
 -   Which categories of jobs have the highest and lowest average deposits?
 
+------------------------------------------------------------------------
+
+```{r child='./analytics/a_jobsDeposits.Rmd'}
+
+```
+
 ## Jobs & Education Level {.unlisted .unnumbered}
 
 -   What is the dominant educational level of each category of job?
+
+------------------------------------------------------------------------
+
+```{r child='./analytics/b_jobsEducation.Rmd'}
+
+```
 
 ## Mortgage & Personal Loans {.unlisted .unnumbered}
 
 -   What percentage of persons have both mortgage and personal loan?
 
+------------------------------------------------------------------------
+
+```{r child='./analytics/c_mortgageLoans.Rmd'}
+
+```
+
 ## Age & Highest Balance {.unlisted .unnumbered}
 
 -   Which age-group has the highest average balance?
+
+------------------------------------------------------------------------
+
+```{r child='./analytics/d_ageBalance.Rmd'}
+
+```
 
 ## Married & Overdraft {.unlisted .unnumbered}
 
 -   What percentage of customers who are married also are in overdraft?
 
+------------------------------------------------------------------------
+
+```{r child='./analytics/e_marriedOverdraft.Rmd'}
+
+```
+
 ## Deposit & Balance {.unlisted .unnumbered}
 
 -   Is there a correlation between deposit and balance? Discuss the findings. Explain the implications.
+
+------------------------------------------------------------------------
+
+```{r child='./analytics/f_depositBalance.Rmd'}
+
+```
 
 ## Deposit {.unlisted .unnumbered}
 
 -   Plot time-series graph(s) to show comparison between deposits made over 2 comparative periods within the data (month/quarter). Interpret and discuss the result.
 
+------------------------------------------------------------------------
+
+```{r child='./analytics/g_depositTime.Rmd'}
+
+```
+
 ## Least Credit Risk {.unlisted .unnumbered}
 
 -   If the Bank wanted to launch a new loan product to target persons who may be considered to have the least credit risk, propose a metric to determine these persons. Use at least 3 features to justify/select your target profile. Example: RefNum \< X AND Married=T AND education=="Tertiary" Risk=Low.
 -   Be prepared to explain why you made the decision on the variables used for determining the best person to target. This may be helped by investigating what banks generally use.
+
+------------------------------------------------------------------------
+
+```{r child='./analytics/h_creditRisk.Rmd'}
+
+```

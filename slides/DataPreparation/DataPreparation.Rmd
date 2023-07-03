@@ -1,79 +1,83 @@
 ## RefNum {.unlisted .unnumbered}
 
-### RefNum Preparation
+```{r child='./columns/RefNum.Rmd'}
 
-```{r echo=TRUE}
-
-# Convert to factor check for uniqueness
-data$RefNum = as.factor(data$RefNum)
-
-levels <- nlevels(data$RefNum)
-
-rows <- length(data$RefNum)
-
-# If the factor count matches the rows, remove
-if(levels == rows) {
-  data$RefNum <- NULL
-  print("Removed RefNum")
-}
 ```
-
-------------------------------------------------------------------------
-
-### RefNum Summary
-
--   Unique ID number
-
--   Nominal Measurement (No order)
 
 ## Balance {.unlisted .unnumbered}
 
--   Test
+```{r child='./columns/Balance.Rmd'}
+
+```
 
 ## Job {.unlisted .unnumbered}
 
--   Test
+```{r child='./columns/Job.Rmd'}
+
+```
 
 ## Deposit {.unlisted .unnumbered}
 
--   Test
+```{r child='./columns/Deposit.Rmd'}
+
+```
 
 ## Age {.unlisted .unnumbered}
 
--   Test
+```{r child='./columns/Age.Rmd'}
+
+```
 
 ## Marital {.unlisted .unnumbered}
 
--   Test
+```{r child='./columns/Marital.Rmd'}
+
+```
 
 ## Education {.unlisted .unnumbered}
 
--   Test
+```{r child='./columns/Education.Rmd'}
+
+```
 
 ## Housing {.unlisted .unnumbered}
 
--   Test
+```{r child='./columns/Housing.Rmd'}
+
+```
 
 ## Loan {.unlisted .unnumbered}
 
--   Test
+```{r child='./columns/Loan.Rmd'}
+
+```
 
 ## Contact {.unlisted .unnumbered}
 
--   Test
+```{r child='./columns/Contact.Rmd'}
+
+```
 
 ## Day {.unlisted .unnumbered}
 
--   Test
+```{r child='./columns/Day.Rmd'}
+
+```
 
 ## Month {.unlisted .unnumbered}
 
--   Test
+```{r child='./columns/Month.Rmd'}
+
+```
 
 ## Duration {.unlisted .unnumbered}
 
--   Test
+```{r child='./columns/Duration.Rmd'}
+
+```
 
 ## Last Deposit
 
--   Test
+```{r child='./columns/LastDeposit.Rmd'}
+
+```

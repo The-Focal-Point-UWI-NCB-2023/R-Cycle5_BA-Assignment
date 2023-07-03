@@ -26,25 +26,25 @@ if (packageVersion('revealjs') <= '0.8') {
 
 # Background
 
-```{r child='./slides/Background/Background.rmd'}
+```{r child='./slides/Background/Background.rmd', cache=TRUE}
 ```
 
 # Data Collection
 
-```{r, echo=FALSE, results='hide'}
+```{r, echo=FALSE, results='hide', cache=TRUE}
 data <- read.csv(file='./dataset.csv', stringsAsFactors = TRUE)
 ```
 
-```{r}
+```{r, cache=TRUE}
 barplot(data$balance)
 ```
 
 # Data Preparation & Cleaning
 
-```{r child='./slides/DataPreparation/DataPreparation.rmd'}
+```{r child='./slides/DataPreparation/DataPreparation.rmd', cache=TRUE}
 ```
 
 # Data Analysis
 
-```{r child='./slides/DataAnalysis/DataAnalysis.rmd'}
+```{r child='./slides/DataAnalysis/DataAnalysis.rmd', cache=TRUE}
 ```
