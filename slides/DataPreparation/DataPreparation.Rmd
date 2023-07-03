@@ -1,75 +1,83 @@
 ## RefNum {.unlisted .unnumbered}
 
-### RefNum Preparation
+```{r child='./columns/RefNum.Rmd'}
 
-```{r echo=TRUE}
-
-# Convert to factor check for uniqueness
-data$RefNum = as.factor(data$RefNum)
-
-levels <- nlevels(data$RefNum)
-
-rows <- length(data$RefNum)
-
-# If the factor count matches the rows, remove
-if(levels == rows) {
-  data$RefNum <- NULL
-  print("Removed RefNum")
-}
 ```
-
-------------------------------------------------------------------------
-
-### RefNum Summary
-
--   Unique ID number
-
--   Nominal Measurement (No order)
-
-## Age {.unlisted .unnumbered}
-
--   Test
-
-## Job {.unlisted .unnumbered}
-
--   Test
-
-## Marital {.unlisted .unnumbered}
-
--   Test
-
-## Education {.unlisted .unnumbered}
-
--   Test
-
-## Housing {.unlisted .unnumbered}
-
--   Test
-
-## Loan {.unlisted .unnumbered}
-
--   Test
-
-## Contact {.unlisted .unnumbered}
-
--   Test
-
-## Day {.unlisted .unnumbered}
-
--   Test
-
-## Month {.unlisted .unnumbered}
-
--   Test
-
-## Duration {.unlisted .unnumbered}
-
--   Test
 
 ## Deposit {.unlisted .unnumbered}
 
--   Test
+```{r child='./columns/Deposit.Rmd'}
+
+```
 
 ## Balance {.unlisted .unnumbered}
 
--   Test
+```{r child='./columns/Balance.Rmd'}
+
+```
+
+## Job {.unlisted .unnumbered}
+
+```{r child='./columns/Job.Rmd'}
+
+```
+
+## Age {.unlisted .unnumbered}
+
+```{r child='./columns/Age.Rmd'}
+
+```
+
+## Marital {.unlisted .unnumbered}
+
+```{r child='./columns/Marital.Rmd'}
+
+```
+
+## Education {.unlisted .unnumbered}
+
+```{r child='./columns/Education.Rmd'}
+
+```
+
+## Housing {.unlisted .unnumbered}
+
+```{r child='./columns/Housing.Rmd'}
+
+```
+
+## Loan {.unlisted .unnumbered}
+
+```{r child='./columns/Loan.Rmd'}
+
+```
+
+## Contact {.unlisted .unnumbered}
+
+```{r child='./columns/Contact.Rmd'}
+
+```
+
+## Day {.unlisted .unnumbered}
+
+```{r child='./columns/Day.Rmd'}
+
+```
+
+## Month {.unlisted .unnumbered}
+
+```{r child='./columns/Month.Rmd'}
+
+```
+
+## Duration {.unlisted .unnumbered}
+
+```{r child='./columns/Duration.Rmd'}
+
+```
+
+## Last Deposit
+
+```{r child='./columns/LastDeposit.Rmd'}
+
+```

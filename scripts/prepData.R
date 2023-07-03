@@ -10,14 +10,14 @@ path <- "/Users/brandonhall/Documents/R/R-Cycle5_BA-Assignment/scripts/columns/"
 # Read Data (Normalize one feature in the dataset. Justify your decision.)
 data <- read.csv(file='/Users/brandonhall/Documents/R/R-Cycle5_BA-Assignment/dataset.csv', stringsAsFactors = TRUE)
 
-# Prep job
-source(paste(path,"job.R", sep=""))
+# Prep deposit, Fix 100+ blank values first, balance fix affect deposit
+source(paste(path,"deposit.R", sep=""))
 
 # Prep balance
 source(paste(path,"balance.R", sep=""))
 
-# Prep deposit
-source(paste(path,"deposit.R", sep=""))
+# Prep job
+source(paste(path,"job.R", sep=""))
 
 # Prep RefNum
 source(paste(path,"RefNum.R", sep=""))
@@ -51,6 +51,12 @@ source(paste(path,"duration.R", sep=""))
 
 # Construct last_deposit column
 source(paste(path,"last_deposit.R", sep=""))
+
+# Normalize Balance
+source(paste(path,"Normalization-Balance.R", sep=""))
+
+# Normalize Deposit
+source(paste(path,"Normalization-Deposit.R", sep=""))
 
 # boxplot(data$balance)
 # boxplotStats <- boxplot.stats(data$balance)

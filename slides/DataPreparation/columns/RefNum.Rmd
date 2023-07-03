@@ -1,0 +1,23 @@
+### RefNum Preparation
+
+```{r echo=TRUE}
+# Convert to factor check for uniqueness 
+data$RefNum = as.factor(data$RefNum)  
+
+levels <- nlevels(data$RefNum)  
+rows <- length(data$RefNum)  
+
+# If the factor count matches the rows, remove 
+if(levels == rows) {   
+  data$RefNum <- NULL   
+  print("Removed RefNum") 
+}
+```
+
+------------------------------------------------------------------------
+
+### RefNum Summary
+
+-   Unique ID number
+
+-   Nominal Measurement (No order)
