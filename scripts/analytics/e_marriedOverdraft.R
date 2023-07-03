@@ -1,9 +1,4 @@
-library(ggplot2)
-library(dplyr)
-attach(data)
 
-
-#sum(marital == "married")
 
 married.Cx <- data %>% select(everything()) %>%
   filter(marital == "married")
@@ -28,4 +23,4 @@ overdraft.chart <- ggplot(graphical.df, aes(x = "", y = Total, fill = Category))
 # Display the pie chart 
 overdraft.chart
 
-length(boxplot.stats(deposit)$out)
+#length(boxplot.stats(deposit)$out)
