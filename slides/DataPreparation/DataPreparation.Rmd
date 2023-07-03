@@ -4,6 +4,12 @@
 
 ```
 
+## Job {.unlisted .unnumbered}
+
+```{r child='./columns/Job.Rmd'}
+
+```
+
 ## Deposit {.unlisted .unnumbered}
 
 ```{r child='./columns/Deposit.Rmd'}
@@ -13,12 +19,6 @@
 ## Balance {.unlisted .unnumbered}
 
 ```{r child='./columns/Balance.Rmd'}
-
-```
-
-## Job {.unlisted .unnumbered}
-
-```{r child='./columns/Job.Rmd'}
 
 ```
 
