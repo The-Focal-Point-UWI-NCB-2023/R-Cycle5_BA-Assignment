@@ -3,6 +3,7 @@ rm(list=ls())
 library(ggplot2)
 library(lubridate)
 library(dplyr)
+library(scales)
 
 # Project Path 
 path <- "./scripts/columns/"
