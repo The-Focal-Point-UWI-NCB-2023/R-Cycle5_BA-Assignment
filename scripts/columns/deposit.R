@@ -13,7 +13,7 @@ boxplot(data$deposit)
 #Using average deposit based on job
 avg.job.deposit <- aggregate(deposit ~ job, data, mean, na.rm = TRUE)
 data$avg_deposit <- avg.job.deposit$deposit[match(data$job, avg.job.deposit$job)]
-data$deposit <- ifelse(is.na(data$deposit), data$avg_deposit, data$deposit)
+data$deposit <- ifelse(is.na(data$deposit), round(data$avg_deposit,1), round(data$deposit,1))
 data$avg_deposit <- NULL
 
 #Using average balance based on job

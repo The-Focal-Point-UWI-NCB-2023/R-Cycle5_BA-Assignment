@@ -2,8 +2,9 @@
 min.deposit <- min(data$deposit, na.rm = T) # Setting Min Value
 max.deposit <- max(data$deposit, na.rm = T) # Setting Max value
 
-new.min <- 0 # Setting new min value for normalized Data to 1
-new.max <- 479 # Setting new max value for normalized Data to 100
+new.min <- 0 # Setting new min value for normalized Data to 0
+# Orginal Max - 479
+new.max <- 199 # Setting new max value for normalized Data to 199
 
 
 

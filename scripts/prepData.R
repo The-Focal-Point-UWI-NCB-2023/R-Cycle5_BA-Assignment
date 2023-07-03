@@ -4,6 +4,7 @@ library(ggplot2)
 library(lubridate)
 library(dplyr)
 library(scales)
+library(corrplot)
 
 # Project Path 
 path <- "./scripts/columns/"
@@ -52,6 +53,9 @@ source(paste(path,"duration.R", sep=""))
 
 # Construct last_deposit column
 source(paste(path,"last_deposit.R", sep=""))
+
+# Remove other outliers
+source(paste(path,"remove_outliers.R", sep=""))
 
 # Normalize Balance
 source(paste(path,"Normalization-Balance.R", sep=""))

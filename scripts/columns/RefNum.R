@@ -2,5 +2,5 @@
 data$RefNum = as.factor(data$RefNum)
 
 # Remove empty factor levels 
-data$housing <- droplevels(data$RefNum)
+data$RefNum <- droplevels(data$RefNum)
 levels(data$RefNum)
