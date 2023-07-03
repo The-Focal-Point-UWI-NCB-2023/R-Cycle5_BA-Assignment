@@ -24,6 +24,8 @@ data$ratio <- NULL
 data$percentage <- NULL
 data[is.na(data)] <- 0
 data$avg_balance <- NULL
+data$deposit <- data$new.deposit
+data$new.deposit <- NULL
 
 count <- sum(data$balance > 668520)
 print(paste("Number of rows where balance is higher than 668520:", count))
