@@ -1,3 +1,6 @@
+library(ggplot2)
+library(dplyr)
+
 # Checking sum of each category
 sum(data$education == "primary")
 sum(data$education == "secondary")
@@ -10,9 +13,6 @@ dominant_edu <- aggregate(education ~ job, data, function(x) {
   paste(names(levels), collapse = ", ")
 })
 
-# Print the dominant educational level for each job category
-print(dominant_edu)
-
 # Plotting the dominant educational levels
 ggplot(dominant_edu, aes(x = job, y = education, fill = education)) +
   geom_bar(stat = "identity") +
@@ -20,10 +20,6 @@ ggplot(dominant_edu, aes(x = job, y = education, fill = education)) +
   ylab("Dominant Educational Level") +
   ggtitle("Dominant Educational Levels by Job Category") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-
-library(ggplot2)
-library(dplyr)
 
 # Calculate the count of each education level for each job category
 edu_count <- data %>%

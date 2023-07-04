@@ -1,12 +1,62 @@
-### Slide Header 1
+## Month Preparation
+
+This feature indicates the last deposit month of the year for the customer
+
+Measurement: Quantitative (Categorical)
+
+Data type: Factor
 
 ```{r echo=TRUE}
-# Code Here
-print("Test Output")
+#view the structure of the duration column  
+str(data$month)
 ```
 
 ------------------------------------------------------------------------
 
-### Slide Header 2
+### Summary of Month
 
--   Horizontal Rules Separate Slides
+```{r echo=TRUE}
+#view the structure of the duration column  
+summary(data$month)
+```
+
+-   Pre clean Checks
+
+    ```{r echo=TRUE}
+    #find the sum of NA values  
+    month_na_sum <- sum(is.na(data$month))
+    ```
+
+    ```{r echo=TRUE}
+    #find the sum of null values  
+    month_null_sum <- sum(is.null(data$month))
+    ```
+
+    ```{r echo=TRUE}
+    #create a list of valid months
+    valid_months <- tolower(month.name)
+
+    #check if any months are invalid
+    invalid_months <- !(tolower(data$month) %in% valid_months)
+    num_of_invalid <- sum(invalid_months)
+    ```
+
+------------------------------------------------------------------------
+
+## Visualization of Months
+
+-   Bargraph
+
+    -   used to show distribution blah blah
+
+```{r echo=TRUE}
+sum_deposits_per_month <- aggregate(deposit ~ month, data, sum)
+
+ggplot(sum_deposits_per_month, aes(x = month, y = deposit)) +
+  geom_bar(stat = "identity", fill = "blue") +
+  xlab("Months") +
+  ylab("Amount of Deposits") +
+  ggtitle("Amount of Deposits per month")
+```
+
+------------------------------------------------------------------------
