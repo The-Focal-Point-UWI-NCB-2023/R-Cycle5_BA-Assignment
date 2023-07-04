@@ -1,8 +1,21 @@
-str(data)
-hist(data$duration)
-sum(is.na(data$duration))
+#view the structure of the duration column
+str(data$duration)
+
+#find the sum of missing values 
+dur_na_sum <- sum(is.na(data$duration))
+
+#shows the distribution
+##chose histogram because of numeric values 
+duration.hist <- hist(data$duration)
+
+#density plot for alternate visualization
+d <- density()
+d <- density(data$duration,na.rm = T)
+plot(d,frame=FALSE, col = "Blue",main="Duration")
+
+avg_duartion <- mean(data$duration)
 
 #convert from seconds to minutes
-## right now a new column is created but the durations column can easily be replaced doing same
-###just in case there is conflict i just created a new column
+data$duration_temp <- round(as.duration(data$duration) / dminutes(1))
+
 data$duration <- round(as.duration(data$duration) / dminutes(1))
