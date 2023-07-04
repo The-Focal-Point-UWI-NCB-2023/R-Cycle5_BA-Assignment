@@ -1,6 +1,8 @@
 source('./scripts/prepData.R')
 path <- './scripts/analytics/'
 
+library(corrplot)
+
 # 2) Data Analysis
 
 # a) Jobs & Deposits

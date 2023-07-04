@@ -7,10 +7,9 @@ data$RefNum = as.factor(data$RefNum)
 levels <- nlevels(data$RefNum)  
 rows <- length(data$RefNum)  
 
-# If the factor count matches the rows, remove 
+# If the factor count matches the rows 
 if(levels == rows) {   
-  data$RefNum <- NULL   
-  print("Removed RefNum") 
+  print("All RefNums Unique") 
 }
 ```
 

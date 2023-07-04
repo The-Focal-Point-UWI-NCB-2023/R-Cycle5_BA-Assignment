@@ -1,0 +1,5 @@
+# IF(AGE < 40, 0, 1) 
+# + IF(Balance < Job Mean Balance, 1, 0)  
+# + IF(MORTGAGE = "no", 0, 1) 
+# + IF(LOAN = "no", 0, 1) 
+# + IF(BALANCE < 100000, 2, 0)
