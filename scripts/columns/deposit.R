@@ -22,6 +22,8 @@ data$avg_deposit <- NULL
 #data$deposit <- ifelse(is.na(data$deposit), data$avg_balance, data$deposit)
 #data$avg_balance <- NULL
 
+data$balance <- ifelse(data$balance<=-112000, -112000, data$balance)
+
 #After Cleaning
 #View(data)
 avg.job.deposit <- NULL

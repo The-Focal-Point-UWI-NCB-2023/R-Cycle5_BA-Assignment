@@ -32,6 +32,7 @@ print(paste("Number of rows where balance is higher than 668520:", count))
 
 avg.job.balance <- NULL
 
+data$deposit <- ifelse(data$deposit>190000, 190000, data$deposit)
 #View(data)
 
 #summary(data)
