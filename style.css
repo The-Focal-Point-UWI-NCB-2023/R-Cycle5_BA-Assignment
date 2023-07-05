@@ -1,0 +1,12 @@
+code {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+code::-webkit-scrollbar {
+  display: none;
+}
+
+table{
+  font-size: 18px;
+}

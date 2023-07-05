@@ -16,10 +16,20 @@
 
 ```
 
+## Deposit Normalization
+
+```{r child='./columns/Deposit_Normalization.Rmd'}
+```
+
 ## Balance {.unlisted .unnumbered}
 
 ```{r child='./columns/Balance.Rmd'}
 
+```
+
+## Balance Normalization
+
+```{r child='./columns/Balance_Normalization.Rmd'}
 ```
 
 ## Age {.unlisted .unnumbered}

@@ -9,6 +9,8 @@ output:
       highlight: zenburn
       footer: "The Focal Point (2023)"
       transition: "slide"
+      center: true
+      css: style.css
 ---
 
 ```{r setup, include=FALSE}

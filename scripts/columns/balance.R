@@ -1,6 +1,7 @@
 #Intial look at data
 str(data)
 summary(data)
+View(data)
 
 # Detecting Outliers
 balancePreClean <- data$balance
@@ -31,12 +32,12 @@ data$avg.balance <- NULL
 data$deposit <- data$new.deposit
 data$new.deposit <- NULL
 avg.job.balance <- NULL
-
-count <- sum(data$balance > 668520)
-print(paste("Number of rows where balance is higher than 668520:", count))
-
-
 data$balance <- ifelse(data$balance<=-112000, -112000, data$balance)
+
+#count <- sum(data$balance > 668520)
+#print(paste("Number of rows where balance is higher than 668520:", count))
+
+
 
 #After Cleaning 
 data$deposit <- as.integer(data$deposit)
