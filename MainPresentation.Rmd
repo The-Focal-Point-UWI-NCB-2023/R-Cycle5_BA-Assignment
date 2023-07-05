@@ -37,7 +37,7 @@ options("scipen"=100, digits = 22)
 
 # Background
 
-```{r child='./slides/Background/Background.rmd', cache=TRUE}
+```{r child='./slides/Background/Background.Rmd', cache=TRUE}
 ```
 
 # Data Collection
@@ -52,10 +52,10 @@ barplot(data$balance)
 
 # Data Preparation & Cleaning
 
-```{r child='./slides/DataPreparation/DataPreparation.rmd', cache=TRUE}
+```{r child='./slides/DataPreparation/DataPreparation.Rmd', cache=TRUE}
 ```
 
 # Data Analysis
 
-```{r child='./slides/DataAnalysis/DataAnalysis.rmd', cache=TRUE}
+```{r child='./slides/DataAnalysis/DataAnalysis.Rmd', cache=TRUE}
 ```
