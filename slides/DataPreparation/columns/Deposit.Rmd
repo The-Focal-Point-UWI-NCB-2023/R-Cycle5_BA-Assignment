@@ -1,15 +1,77 @@
 ### Deposit Preparation
 
 ```{r echo=TRUE}
-# Code Here
-avg.job.deposit <- aggregate(deposit ~ job, data, mean, na.rm = TRUE)
-data$avg_deposit <- avg.job.deposit$deposit[match(data$job, avg.job.deposit$job)]
-data$deposit <- ifelse(is.na(data$deposit), round(data$avg_deposit,1), round(data$deposit,1))
-data$avg_deposit <- NULL
+#Take an initial look at data
+str(data)
+
 ```
 
 ------------------------------------------------------------------------
 
 ### Slide Header 2
 
--   Horizontal Rules Separate Slides
+```{r echo = TRUE}
+summary(data)
+```
+
+------------------------------------------------------------------------
+
+```{r echo = TRUE}
+depositPreClean <- data$deposit
+hist(depositPreClean)
+```
+
+------------------------------------------------------------------------
+
+```{r}
+options("scipen"=100, digits = 22)
+d <- density(depositPreClean,na.rm = T)
+plot(d,frame=FALSE, col = "Blue",main="Deposit")
+
+```
+
+------------------------------------------------------------------------
+
+```{r}
+boxplot(depositPreClean)
+```
+
+------------------------------------------------------------------------
+
+```{r}
+avg.job.deposit <- aggregate(deposit ~ job, data, mean, na.rm = TRUE)
+data$avg.deposit <- avg.job.deposit$deposit[match(data$job, avg.job.deposit$job)]
+data$deposit <- ifelse(is.na(data$deposit), round(data$avg.deposit,1), round(data$deposit,1))
+data$balance <- ifelse(data$balance<=-112000, -112000, data$balance)
+```
+
+------------------------------------------------------------------------
+
+```{r}
+#After Cleaning
+data$avg.deposit <- NULL
+avg.job.deposit <- NULL
+avg.job.balance <- NULL
+d <- NULL
+```
+
+------------------------------------------------------------------------
+
+```{r}
+plot(density(data$deposit))
+
+```
+
+------------------------------------------------------------------------
+
+```{r}
+plot(hist(data$deposit))
+```
+
+------------------------------------------------------------------------
+```{r}
+boxplot(data$deposit)
+
+```
+
+

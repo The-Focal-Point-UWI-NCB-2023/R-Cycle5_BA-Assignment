@@ -14,7 +14,6 @@ boxplot(depositPreClean)
 avg.job.deposit <- aggregate(deposit ~ job, data, mean, na.rm = TRUE)
 data$avg.deposit <- avg.job.deposit$deposit[match(data$job, avg.job.deposit$job)]
 data$deposit <- ifelse(is.na(data$deposit), round(data$avg.deposit,1), round(data$deposit,1))
-
 data$balance <- ifelse(data$balance<=-112000, -112000, data$balance)
 
 #After Cleaning
