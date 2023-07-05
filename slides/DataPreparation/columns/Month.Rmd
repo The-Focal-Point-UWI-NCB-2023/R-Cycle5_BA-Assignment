@@ -20,8 +20,6 @@ str(data$month)
 summary(data$month)
 ```
 
--   
-
 -   Pre-clean Checks
 
     ```{r echo=TRUE}
@@ -59,21 +57,7 @@ summary(data$month)
 
 ```{r echo=TRUE}
 library(ggplot2)
-sum_deposits_per_month <- aggregate(deposit ~ month, data, sum)
 
-ggplot(sum_deposits_per_month, aes(x = month, y = deposit)) +
-  geom_bar(stat = "identity", fill = "blue") +
-  xlab("Months") +
-  ylab("Amount of Deposits") +
-  ggtitle("Amount of Deposits per month")
-```
-
-------------------------------------------------------------------------
-
-## Visualization of Months
-
-```{r echo=TRUE}
-library(ggplot2)
 sum_deposits_per_month <- aggregate(deposit ~ month, data, sum)
 
 ggplot(sum_deposits_per_month, aes(x = month, y = deposit, label=deposit)) +

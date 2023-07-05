@@ -1,12 +1,45 @@
-### Slide Header 1
+## Jobs & Education Level {.unlisted .unnumbered}
 
 ```{r echo=TRUE}
-# Code Here
-print("Test Output")
+dominant_edu <- aggregate(education ~ job, data, function(x) {
+  levels <- table(x)
+  levels <- levels[levels == max(levels)]
+  paste(names(levels), collapse = ", ")
+})
+
+knitr::kable(avg_job_deposit[,], format="markdown",caption ='dominant educational level of each category of job')
 ```
 
 ------------------------------------------------------------------------
 
-### Slide Header 2
+## Jobs & Education Level {.unlisted .unnumbered}
 
 -   Horizontal Rules Separate Slides
+
+```{r echo=TRUE}
+ggplot(dominant_edu, aes(x = job, y = education, fill = education)) +
+  geom_bar(stat = "identity") +
+  xlab("Job") +
+  ylab("Dominant Educational Level") +
+  ggtitle("Dominant Educational Levels by Job Category") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+------------------------------------------------------------------------
+
+## Jobs & Education Level {.unlisted .unnumbered}
+
+```{r echo=TRUE}
+# Calculate the count of each education level for each job category
+edu_count <- data %>%
+  group_by(job, education) %>%
+  summarize(count = n())
+
+# Plotting the count of each education level for each job category
+ggplot(edu_count, aes(x = job, y = count, label=count, fill = education)) +
+  geom_bar(stat = "identity", position = "stack") +
+  xlab("Job") +
+  ylab("Count") +
+  ggtitle("Count of Education Levels by Job Category") +
+  theme(axis.text.x = element_text(angle=45, hjust=1))
+```

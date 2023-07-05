@@ -1,12 +1,27 @@
-### Slide Header 1
+### Jobs & Deposits
 
 ```{r echo=TRUE}
-# Code Here
-print("Test Output")
+avg_job_deposit <- aggregate(deposit ~ job, data, mean, na.rm = TRUE)
+knitr::kable(avg_job_deposit[,], format="markdown",caption ='Table showing the average deposit per job category')
 ```
 
 ------------------------------------------------------------------------
 
-### Slide Header 2
+### Jobs & Deposits
 
--   Horizontal Rules Separate Slides
+```{r echo=TRUE}
+avg_job_deposit <- aggregate(deposit ~ job, data, mean, na.rm = TRUE) 
+# Plotting the average deposits
+ggplot(avg_job_deposit, aes(x = job, y = deposit,label=deposit)) +
+  geom_bar(stat = "identity", fill = "blue") +
+  geom_bar(data = subset(avg_job_deposit, deposit == max(deposit)), fill = "red", stat = "identity")+
+  geom_bar(data = subset(avg_job_deposit, deposit == min(deposit)), fill = "white", stat = "identity")+
+  geom_text(size = 3, position = position_stack(vjust=1.05)) +
+  xlab("Job") +
+  ylab("Average Deposit") +
+  ggtitle("Average Deposits by Job Category")
+```
+
+Job with minimum deposit: Student
+
+Job with maximum deposit: Self-employed

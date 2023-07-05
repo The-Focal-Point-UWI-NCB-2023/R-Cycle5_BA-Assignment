@@ -27,10 +27,10 @@ edu_count <- data %>%
   summarize(count = n())
 
 # Plotting the count of each education level for each job category
-ggplot(edu_count, aes(x = job, y = count, fill = education)) +
+ggplot(edu_count, aes(x = job, y = count, label=count, fill = education)) +
   geom_bar(stat = "identity", position = "stack") +
   xlab("Job") +
   ylab("Count") +
   ggtitle("Count of Education Levels by Job Category") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(axis.text.x = element_text(angle=45, hjust=1))
 
