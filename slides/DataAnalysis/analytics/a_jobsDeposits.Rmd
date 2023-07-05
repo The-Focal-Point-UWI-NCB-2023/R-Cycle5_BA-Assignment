@@ -1,9 +1,11 @@
 ### Jobs & Deposits
 
 ```{r echo=FALSE}
+options(digits=1)
 avg_job_deposit <- aggregate(deposit ~ job, data, mean, na.rm = TRUE)
 avg_job_deposit$deposit <- round(avg_job_deposit$deposit,2)
 knitr::kable(avg_job_deposit[,], format="markdown",caption ='Table showing the average deposit per job category')
+options(digits=22)
 ```
 
 ------------------------------------------------------------------------
