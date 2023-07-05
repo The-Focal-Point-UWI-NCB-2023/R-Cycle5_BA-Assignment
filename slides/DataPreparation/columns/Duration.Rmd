@@ -1,6 +1,6 @@
 ## Duration Preparation
 
-This feature measures the time spent on the call during the last contact with the customer, expressed in seconds.
+This feature shows the time spent (seconds) on the last call.
 
 Measurement: Quantitative (Interval)
 
@@ -11,51 +11,39 @@ Data type: Numeric
 str(data$duration)
 ```
 
-------------------------------------------------------------------------
-
-### Summary of Duration
-
 ```{r echo=TRUE}
 #view the structure of the duration column 
 summary(data$duration)
 ```
 
--   Pre clean Checks
+------------------------------------------------------------------------
+
+### Summary of Duration
+
+-   Pre-clean Checks
 
     ```{r echo=TRUE}
     #find the sum of NA values 
     dur_na_sum <- sum(is.na(data$duration))
-    ```
-
-    ```{r echo=TRUE}
+    print(dur_na_sum)
     #find the sum of null values 
     dur_null_sum <- sum(is.null(data$duration))
-    ```
-
-------------------------------------------------------------------------
-
-## Summary of Duration
-
--   conversion from SECONDS to MINUTES
-
-    ```{r echo=TRUE}
-    install.packages("lubridate")
-    library('lubridate')
-    #convert from seconds to minutes
-    data$duration_temp <- round(as.duration(data$duration) / dminutes(1))
-
-    data$duration <- round(as.duration(data$duration) / dminutes(1))
+    print(dur_null_sum)
     ```
 
 ------------------------------------------------------------------------
 
 ## Visualization of Duration
 
+-   conversion from SECONDS to MINUTES
+
 -   Histogram
 
-    -   used to show distribution blah blah
+    -   used to show distribution of data
 
-```{r echo=TRUE}
+------------------------------------------------------------------------
+
+```{r echo=FALSE}
 hist(data$duration)
 ```
 
@@ -63,13 +51,9 @@ hist(data$duration)
 
 ## Visualization of Duration
 
--   Density Plot
+-   Density Plot:
 
-    -   used to
-
-    -   alternative visualization
-
-        ```{r echo=TRUE}
-        d <- density(data$duration,na.rm = T)
-        plot(d,frame=FALSE, col = "Blue",main="Duration")
-        ```
+    ```{r echo=FALSE}
+    d <- density(data$duration,na.rm = T)
+    plot(d,frame=FALSE, col = "Blue",main="Duration")
+    ```
