@@ -39,6 +39,8 @@ print(paste("Number of rows where balance is higher than 668520:", count))
 data$balance <- ifelse(data$balance<=-112000, -112000, data$balance)
 
 #After Cleaning 
+data$deposit <- as.integer(data$deposit)
+data$deposit <- as.numeric(data$deposit)
 
 d <- density(data$balance,na.rm = T)
 hist(data$balance)
