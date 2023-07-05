@@ -8,6 +8,91 @@ str(data$age)
 
 ------------------------------------------------------------------------
 
-### Slide Header 2
+### Preparation
 
--   Horizontal Rules Separate Slides
+```{r echo=FALSE, results='hide'}
+agePreClean <- data$age
+```
+
+::: {style="display: flex;"}
+<div>
+
+```{r echo=FALSE}
+plot(density(agePreClean), main="Age Before Cleaning")
+```
+
+</div>
+
+<div>
+
+```{r echo=FALSE}
+hist(agePreClean, main="Age Before Cleaning", xlab="Age")
+```
+
+</div>
+:::
+
+------------------------------------------------------------------------
+
+-   Capping values at 60
+
+```{r echo=TRUE}
+data$age[data$age > 60] <- 60
+```
+
+------------------------------------------------------------------------
+
+::: {style="display: flex;"}
+<div>
+
+```{r echo=FALSE}
+plot(density(data$age), main="Age After Cleaning")
+```
+
+</div>
+
+<div>
+
+```{r echo=FALSE}
+hist(data$age, main="Age After Cleaning", xlab="Age")
+```
+
+</div>
+:::
+
+------------------------------------------------------------------------
+
+## Age Discritization
+
+-   Using Equal-Frequency Binning
+-   All bins have equal width
+-   Preserving original distribution
+
+------------------------------------------------------------------------
+
+```{r echo=TRUE}
+# Discretize Age (Using Equal Frequency Binning)
+L <- min(data$age) # 20
+H <- max(data$age) # 60
+N <- 4 # 4 Groups from Histogram
+IW <- ((H-L)/N) # 10
+
+data$temp <- data$age
+
+# Convert to groups as factor
+age.groups <- c("20-29", "30-39", "40-49", "50-60") 
+data$age <- as.factor(ifelse(
+  data$temp < 60,
+  age.groups[floor(((data$temp/10) - 1))], age.groups[4]
+))
+```
+
+------------------------------------------------------------------------
+
+```{r echo=FALSE}
+plot(data$age, main="Age after Discritization")
+```
+
+```{r echo=FALSE, results='hide'}
+data$temp <- NULL
+```
