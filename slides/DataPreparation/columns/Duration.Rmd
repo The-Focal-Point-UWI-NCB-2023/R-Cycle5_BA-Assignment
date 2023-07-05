@@ -34,11 +34,13 @@ summary(data$duration)
 
 ------------------------------------------------------------------------
 
-## Summary of Duration 
+## Summary of Duration
 
 -   conversion from SECONDS to MINUTES
 
     ```{r echo=TRUE}
+    install.packages("lubridate")
+    library('lubridate')
     #convert from seconds to minutes
     data$duration_temp <- round(as.duration(data$duration) / dminutes(1))
 
@@ -59,7 +61,7 @@ hist(data$duration)
 
 ------------------------------------------------------------------------
 
-## Visualization of Duration 
+## Visualization of Duration
 
 -   Density Plot
 
@@ -68,7 +70,6 @@ hist(data$duration)
     -   alternative visualization
 
         ```{r echo=TRUE}
-        d <- density()
         d <- density(data$duration,na.rm = T)
         plot(d,frame=FALSE, col = "Blue",main="Duration")
         ```

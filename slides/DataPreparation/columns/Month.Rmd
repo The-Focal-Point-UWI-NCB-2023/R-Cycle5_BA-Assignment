@@ -50,6 +50,7 @@ summary(data$month)
     -   used to show distribution blah blah
 
 ```{r echo=TRUE}
+library(ggplot2)
 sum_deposits_per_month <- aggregate(deposit ~ month, data, sum)
 
 ggplot(sum_deposits_per_month, aes(x = month, y = deposit)) +

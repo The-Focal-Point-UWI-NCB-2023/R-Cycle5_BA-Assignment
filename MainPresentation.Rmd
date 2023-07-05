@@ -24,6 +24,16 @@ if (packageVersion('revealjs') <= '0.8') {
 }
 ```
 
+```{r echo=TRUE}
+library(stringr)
+library(ggplot2)
+library(lubridate)
+library(dplyr)
+library(scales)
+library(corrplot)
+library(stringr)
+```
+
 # Background
 
 ```{r child='./slides/Background/Background.rmd', cache=TRUE}

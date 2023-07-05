@@ -1,3 +1,4 @@
+
 #view the structure of the duration column
 str(data$duration)
 
@@ -15,7 +16,6 @@ dur_null_sum <- sum(is.null(data$duration))
 duration.hist <- hist(data$duration)
 
 #density plot for alternate visualization
-d <- density()
 d <- density(data$duration,na.rm = T)
 plot(d,frame=FALSE, col = "Blue",main="Duration")
 
