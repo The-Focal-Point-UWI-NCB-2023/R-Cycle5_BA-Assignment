@@ -31,7 +31,7 @@ library(lubridate)
 library(dplyr)
 library(scales)
 library(corrplot)
-library(stringr)
+library(stringr)  
 ```
 
 # Background
