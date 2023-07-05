@@ -1,6 +1,8 @@
 ### Overview
 
--   A unique identifier for each customer
+-   Unique ID number
+-   Nominal Measurement (No order)
+-   **CAN'T** remove, needed by bank
 
 ```{r}
 str(data$RefNum)
@@ -23,13 +25,3 @@ if(levels == rows) {
   print("All RefNums Unique") 
 }
 ```
-
-------------------------------------------------------------------------
-
-### RefNum Summary
-
--   Unique ID number
-
--   Nominal Measurement (No order)
-
--   **CAN'T** remove, needed by bank

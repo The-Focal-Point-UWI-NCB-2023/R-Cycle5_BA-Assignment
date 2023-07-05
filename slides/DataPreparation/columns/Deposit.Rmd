@@ -1,39 +1,36 @@
 ### Deposit Preparation
 
-```{r echo=TRUE}
-#Take an initial look at data
-str(data)
+Data Type: Quantitative
 
-```
+Measurement: Ratio
 
-------------------------------------------------------------------------
-
-### Slide Header 2
-
-```{r echo = TRUE}
+```{r echo=FALSE}
+str(data$deposit)
+options(digits = 1)
 summary(data$deposit)
+options(digits = 22)
+
 ```
 
 ------------------------------------------------------------------------
 
 ```{r echo = FALSE}
 depositPreClean <- data$deposit
-hist(depositPreClean)
+hist(depositPreClean,main="Histogram of Deposit Before Cleaning")
 ```
 
 ------------------------------------------------------------------------
 
 ```{r}
-options("scipen"=100, digits = 22)
 d <- density(depositPreClean,na.rm = T)
-plot(d,frame=FALSE, col = "Blue",main="Deposit")
+plot(d,frame=FALSE, col = "Blue",main="Density of Deposit Before Cleaning")
 
 ```
 
 ------------------------------------------------------------------------
 
 ```{r}
-boxplot(depositPreClean)
+boxplot(depositPreClean,main="Box Plot of Deposit Before Cleaning")
 ```
 
 ------------------------------------------------------------------------
@@ -53,7 +50,7 @@ data$deposit <- ifelse(data$deposit>190000, 190000, data$deposit)
 
 ------------------------------------------------------------------------
 
-```{r}
+```{r echo = TRUE}
 #After Cleaning
 data$avg.deposit <- NULL
 avg.job.deposit <- NULL
@@ -64,19 +61,19 @@ d <- NULL
 ------------------------------------------------------------------------
 
 ```{r}
-plot(density(data$deposit))
+hist(data$deposit,main = "Histogram of Deposit After Cleaning")
+```
+
+------------------------------------------------------------------------
+
+```{r}
+plot(density(data$deposit),main = "Density Plot of Deposit After Cleaning")
 
 ```
 
 ------------------------------------------------------------------------
 
 ```{r}
-plot(hist(data$deposit))
-```
-
-------------------------------------------------------------------------
-
-```{r}
-boxplot(data$deposit)
+boxplot(data$deposit,main="Box Plot of Deposit After Cleaning")
 
 ```

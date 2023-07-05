@@ -1,3 +1,9 @@
+-   Categorical Measurement
+
+-   11 Unique Values
+
+-   Large amount of blue-collar jobs
+
 ------------------------------------------------------------------------
 
 ### Overview
@@ -67,11 +73,3 @@ barplot(table(data$job), xlab = "", ylab = "", main = "Job Count", las=2, cex.na
 ```
 
 ------------------------------------------------------------------------
-
-### Job Summary 
-
--   Categorical Measurement
-
--   11 Unique Values
-
--   Large amount of blue-collar jobs
