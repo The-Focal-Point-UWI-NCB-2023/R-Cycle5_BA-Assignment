@@ -1,12 +1,95 @@
-### Slide Header 1
+# Education Preparation
+
+-   This feature represents the highest level of education attained by each entity.
+
+-   It has 3 factors, namely: Primary, Secondary and Tertiary.
 
 ```{r echo=TRUE}
-# Code Here
-print("Test Output")
+    unique(data$education)
+    ```
+
+## Summary
+
+Measurement : Categorical
+
+Data Type: Factor
+
+The first step in Preparing this feature was to observe the data.
+
+```{r echo=TRUE}
+summary(data$education)
 ```
 
 ------------------------------------------------------------------------
 
-### Slide Header 2
+### Education Cleaning - Handling Missing Data
 
--   Horizontal Rules Separate Slides
+```{=html}
+<small> The decision was made to derive the missing data based on information deduced from our data-set. </small>
+```
+<small> Calculate the average balance associated with each level of education </small>
+
+```{r echo=FALSE, fig.align='center', fig.height=5, fig.width=7, message=FALSE, warning=FALSE}
+avg_balance <- data %>%
+  filter(education != "") %>%
+  group_by(education) %>%
+  summarize(avg_balance = mean(balance, na.rm = TRUE))
+
+library(plotly)
+colors <- c("blue", "green", "red")
+plot <- plot_ly(data = avg_balance, x = ~education, y = ~avg_balance, type = "bar",
+                marker = list(color = colors),
+                hovertemplate = paste("Education: %{x}<br>",
+                                      "Average Balance: %{y}"))
+
+layout <- list(title = "Average Balance by Education",
+               xaxis = list(title = "Education"),
+               yaxis = list(title = "Average Balance"))
+
+plot <- plot %>% layout(layout)
+
+plot
+```
+
+------------------------------------------------------------------------
+
+### Updating Missing Values
+
+```{r echo=FALSE, message=FALSE}
+avg_balance <- data %>%
+  filter(education != "") %>%
+  group_by(education) %>%
+  summarize(avg_balance = mean(balance, na.rm = TRUE))
+
+#attach(avg_balance)
+
+tempdf <- data %>%
+  mutate(
+    tertiary_diff = abs(balance - avg_balance$avg_balance[3]),
+    secondary_diff = abs(balance - avg_balance$avg_balance[2]),
+    primary_diff = abs(balance - avg_balance$avg_balance[1])
+  )
+
+```
+
+```{r echo=TRUE}
+tempdf <- tempdf %>%
+  rowwise() %>%
+  mutate(
+    education = if_else( education == "",
+      if_else(
+        tertiary_diff <= secondary_diff & tertiary_diff <= primary_diff,
+        "tertiary",
+        if_else(
+          secondary_diff <= primary_diff, "secondary", "primary")
+      ),education
+    )
+    )
+data$education <- as.factor(tempdf$education)
+
+summary(data$education)
+
+```
+
+------------------------------------------------------------------------
+
