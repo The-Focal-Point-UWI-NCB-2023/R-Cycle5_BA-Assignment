@@ -25,6 +25,7 @@ if (packageVersion('revealjs') <= '0.8') {
   install.packages('revealjs')  # update rmarkdown from CRAN
 }
 ```
+
 ```{r echo=FALSE}
 library(stringr)
 library(ggplot2)
