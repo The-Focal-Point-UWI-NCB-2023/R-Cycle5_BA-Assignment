@@ -1,6 +1,10 @@
-### Overview
+-   Data Type: Qualitative
 
--   A unique identifier for each customer
+-   Measurement: Nominal
+
+-   Unique ID number
+
+-   **CAN'T** remove, needed by bank
 
 ```{r}
 str(data$RefNum)
@@ -23,13 +27,3 @@ if(levels == rows) {
   print("All RefNums Unique") 
 }
 ```
-
-------------------------------------------------------------------------
-
-### RefNum Summary
-
--   Unique ID number
-
--   Nominal Measurement (No order)
-
--   **CAN'T** remove, needed by bank

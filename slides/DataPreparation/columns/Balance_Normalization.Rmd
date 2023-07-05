@@ -1,3 +1,7 @@
+------------------------------------------------------------------------
+
+```{r echo = TRUE}
+
 
 min.balance <- min(data$balance, na.rm = T) # Setting Min Value
 max.balance <- max(data$balance, na.rm = T) # Setting Max value
@@ -17,6 +21,14 @@ data<- data %>%
     )
   )
 
-boxplot(data$balance)
+```
 
+------------------------------------------------------------------------
+
+```{r}
+hist(data$balance,main="Histogram of Balance After Normalization")
+
+```
+
+------------------------------------------------------------------------
 

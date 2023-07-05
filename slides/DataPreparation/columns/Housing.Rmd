@@ -1,12 +1,36 @@
-### Slide Header 1
+------------------------------------------------------------------------
+
+## Summary - Housing
+
+<small> This feature indicates whether or not a person has a mortgage.</small>
+
+<small> Measurement: Quantitative (Categorical) </small>
+
+<small> Data type: Factor </small>
 
 ```{r echo=TRUE}
-# Code Here
-print("Test Output")
+unique(data$housing)
+
 ```
 
 ------------------------------------------------------------------------
 
-### Slide Header 2
+## Summary - Housing
 
--   Horizontal Rules Separate Slides
+```{r echo=TRUE}
+str(data$housing)
+summary(data$housing)
+
+```
+
+------------------------------------------------------------------------
+
+## Cleaning 
+
+<small> We made the decision to clean these missing values through deletion </small>
+
+```{r echo=TRUE}
+data <- data[data$housing != "",]
+data$housing <- droplevels(data$housing)
+summary(data$housing)
+```

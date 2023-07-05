@@ -25,7 +25,8 @@ if (packageVersion('revealjs') <= '0.8') {
   install.packages('revealjs')  # update rmarkdown from CRAN
 }
 ```
-```{r echo=FALSE}
+
+```{r echo=FALSE, results='hide'}
 library(stringr)
 library(ggplot2)
 library(lubridate)
@@ -33,6 +34,7 @@ library(dplyr)
 library(scales)
 library(corrplot)
 library(stringr)  
+library(plotly)
 options("scipen"=100, digits = 22)
 ```
 
