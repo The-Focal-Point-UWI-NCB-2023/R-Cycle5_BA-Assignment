@@ -1,8 +1,19 @@
+### Overview
+
+-   A unique identifier for each customer
+
+```{r}
+str(data$RefNum)
+```
+
+------------------------------------------------------------------------
+
 ### RefNum Preparation
 
-```{r echo=FALSE}
+```{r echo=TRUE}
 # Convert to factor check for uniqueness 
 data$RefNum = as.factor(data$RefNum)  
+str(data$RefNum)
 
 levels <- nlevels(data$RefNum)  
 rows <- length(data$RefNum)  
@@ -20,3 +31,5 @@ if(levels == rows) {
 -   Unique ID number
 
 -   Nominal Measurement (No order)
+
+-   **CAN'T** remove, needed by bank
