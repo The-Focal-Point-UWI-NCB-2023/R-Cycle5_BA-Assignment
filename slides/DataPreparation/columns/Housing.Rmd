@@ -1,6 +1,6 @@
 ------------------------------------------------------------------------
 
-# Summary - Housing
+## Summary - Housing
 
 <small> This feature indicates whether or not a person has a mortgage.</small>
 
