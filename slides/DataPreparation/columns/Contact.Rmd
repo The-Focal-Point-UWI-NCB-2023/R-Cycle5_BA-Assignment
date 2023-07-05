@@ -1,12 +1,7 @@
-### Slide Header 1
+-   No information on what this is
+
+-   Removed
 
 ```{r echo=TRUE}
-# Code Here
-print("Test Output")
+data$contact <- NULL
 ```
-
-------------------------------------------------------------------------
-
-### Slide Header 2
-
--   Horizontal Rules Separate Slides
