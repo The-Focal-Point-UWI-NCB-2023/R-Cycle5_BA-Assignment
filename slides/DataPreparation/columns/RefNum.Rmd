@@ -1,6 +1,16 @@
+### Overview
+
+-   A unique identifier for each customer
+
+```{r}
+str(data$RefNum)
+```
+
+------------------------------------------------------------------------
+
 ### RefNum Preparation
 
-```{r echo=FALSE}
+```{r}
 # Convert to factor check for uniqueness 
 data$RefNum = as.factor(data$RefNum)  
 
