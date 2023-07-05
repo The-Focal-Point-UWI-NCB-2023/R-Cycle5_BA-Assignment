@@ -39,8 +39,8 @@ summary(data$duration)
 -   conversion from SECONDS to MINUTES
 
     ```{r echo=TRUE}
-    install.packages("lubridate")
-    library('lubridate')
+    #install.packages("lubridate")
+   
     #convert from seconds to minutes
     data$duration_temp <- round(as.duration(data$duration) / dminutes(1))
 

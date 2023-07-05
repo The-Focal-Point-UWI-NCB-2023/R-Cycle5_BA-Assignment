@@ -1,12 +1,80 @@
-### Slide Header 1
+# Day Column Cleaning And Preperation
 
+## Cleaning And Preparing The Day Column
+
+Checking For Null Elements
 ```{r echo=TRUE}
-# Code Here
-print("Test Output")
+empty_rows <- sum(is.na(data$day))
+
+``` 
+
+Checking For Spaces
+```{r echo=TRUE}
+space_in_row <- grepl("\\s", data$day)
+
+```
+
+Checking For Non-Numeric Values
+```{r echo=TRUE}
+non.numeric <- any(!is.numeric(data$day))
+
 ```
 
 ------------------------------------------------------------------------
 
-### Slide Header 2
+#Checking if A Day is Invalid  
+```{r echo=TRUE}
+months = 1:12
+names(months) = month.name
 
--   Horizontal Rules Separate Slides
+data$date <- as.Date(paste(
+  months[str_to_title(data$month)], 
+  data$day, sep = "-"), 
+  format = "%m-%d")
+
+# Check and print rows with NA values in a specific column FIRST CHECK
+na_rows <- is.na(data$date)
+
+# Print the rows with NA values
+for (i in which(na_rows)) {
+  cat("Row", i, "contains an NA value in column", "column_name", "\n")
+}
+```
+------------------------------------------------------------------------
+```{r echo=TRUE}
+# If the date is invalid then change the day to the last 
+#real day of the month
+for (i in 1:nrow(data)) {
+  if(is.na(data$date[i])){
+    fixed.date <- as.Date(paste(months
+    [str_to_title(data$month[i])], 1, sep = "-"), format = "%m-%d")
+    end.of.month <- lubridate::ceiling_date(fixed.date, "month") - 1
+    last.day <- format(end.of.month,format ='%d')
+    data$day[i] <- as.integer(last.day)
+    data$date[i] <- end.of.month
+  }
+  
+  
+}
+```
+
+------------------------------------------------------------------------
+```{r echo=TRUE}
+# Check and print rows with NA values in a specific column FINAL CHECK
+na_rows <- is.na(data$date)
+
+# Print the rows with NA values
+for (i in which(na_rows)) {
+  cat("Row", i, "contains an NA value in column", "column_name", "\n")
+}
+
+#Remove Date Column
+if (sum(na_rows) == 0 ){
+  print('There are no invalid days')
+  data$date <- NULL}
+```
+------------------------------------------------------------------------
+
+
+
+
