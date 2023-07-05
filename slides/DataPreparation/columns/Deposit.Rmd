@@ -11,7 +11,7 @@ str(data)
 ### Slide Header 2
 
 ```{r echo = TRUE}
-summary(data)
+summary(data$deposit)
 ```
 
 ------------------------------------------------------------------------
