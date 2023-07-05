@@ -1,6 +1,6 @@
 ### RefNum Preparation
 
-```{r echo=TRUE}
+```{r echo=FALSE}
 # Convert to factor check for uniqueness 
 data$RefNum = as.factor(data$RefNum)  
 

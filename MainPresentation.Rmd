@@ -24,7 +24,7 @@ if (packageVersion('revealjs') <= '0.8') {
 }
 ```
 
-```{r echo=TRUE}
+```{r echo=FALSE}
 library(stringr)
 library(ggplot2)
 library(lubridate)
@@ -32,6 +32,7 @@ library(dplyr)
 library(scales)
 library(corrplot)
 library(stringr)  
+options("scipen"=100, digits = 22)
 ```
 
 # Background
