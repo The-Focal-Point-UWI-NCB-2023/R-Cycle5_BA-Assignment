@@ -5,7 +5,7 @@ length(unique(data$education)) #= 4
 sum(data$education == "") # 47 missing values
 
 #Counting Na values
-sum(is.na(data$education)) # No missing values
+sum(is.na(data$education)) # No NA values
 
 avg_balance <- data %>%
   filter(education != "") %>%
