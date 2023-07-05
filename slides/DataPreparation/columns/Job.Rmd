@@ -1,12 +1,77 @@
-### Slide Header 1
+------------------------------------------------------------------------
 
-```{r echo=TRUE}
-# Code Here
-print("Test Output")
+### Overview
+
+#### Job Categories
+
+| Score | Job Titles                                          |
+|-------|-----------------------------------------------------|
+| 0     | Management                                          |
+| 1     | Admin, Blue-Collar, Housemaid, Services, Technician |
+| 2     | Entrepeneur, Self-Employed                          |
+| 3     | Student, Retired, Unemployed                        |
+
+------------------------------------------------------------------------
+
+### Job Preparation
+
+```{r echo=FALSE}
+str(data$job)
 ```
 
 ------------------------------------------------------------------------
 
-### Slide Header 2
+```{r echo=FALSE}
+avgBalancePerJob <- setNames(
+  aggregate(
+    data$balance, 
+    list(data$job), 
+    FUN = mean, 
+    na.rm = TRUE
+    ),
+    c("Job","Balance")
+  )
+avgBalancePerJob$Balance <- round(avgBalancePerJob$Balance, 0)
+plot(avgBalancePerJob$Balance ~ avgBalancePerJob$Job, xlab = "", ylab = "", main = "Mean by Job", las=2)
+```
 
--   Horizontal Rules Separate Slides
+------------------------------------------------------------------------
+
+```{r echo=TRUE}
+empty_rows <- which(data$job == "") # Empty Rows
+for (row in empty_rows) {
+  # Find closest job based on balance
+  closestMatch <- avgBalancePerJob$Job[
+      which.min(
+          abs(data$balance[row] - avgBalancePerJob$Balance)
+      )
+    ]
+  #Replace
+  data$job[row] <- closestMatch
+}
+
+# Check for correct factors
+data$job <- droplevels(data$job)
+levels(data$job)
+```
+
+```{r echo=FALSE, results='hide'}
+empty_rows <- NULL
+avgBalancePerJob <- NULL
+```
+
+------------------------------------------------------------------------
+
+```{r echo=FALSE}
+barplot(table(data$job), xlab = "", ylab = "", main = "Job Count", las=2, cex.names = 0.8)
+```
+
+------------------------------------------------------------------------
+
+### Job Summary 
+
+-   Categorical Measurement
+
+-   11 Unique Values
+
+-   Large amount of blue-collar jobs

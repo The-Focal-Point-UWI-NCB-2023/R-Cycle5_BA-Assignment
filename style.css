@@ -6,3 +6,7 @@ code {
 code::-webkit-scrollbar {
   display: none;
 }
+
+table{
+  font-size: 18px;
+}
