@@ -49,8 +49,10 @@ options("scipen"=100, digits = 22)
 data <- read.csv(file='./dataset.csv', stringsAsFactors = TRUE)
 ```
 
+-   Customer Data
+
 ```{r, cache=TRUE}
-barplot(data$balance)
+str(data)
 ```
 
 # Data Preparation & Cleaning
