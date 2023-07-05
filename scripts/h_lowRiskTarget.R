@@ -2,7 +2,7 @@
 #unique(data$job)
 
 # Creating The weights for Job feature
-Job.Weights <- c("admin." = 1, "blue-collar" = 1, "entrepeneur" = 2, "housemaid" = 1,
+Job.Weights <- c("admin" = 1, "blue-collar" = 1, "entrepeneur" = 2, "housemaid" = 1,
                  "management" = 0, "retired" = 3,   "self-employed" = 2, "services" = 1, 
                  "student" = 3,"technician" = 1, "unemployed" = 3)
 #levels(data$job)

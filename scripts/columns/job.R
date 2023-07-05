@@ -2,6 +2,10 @@
 #"entrepreneur", "student", "blue-collar", "self-employed", 
 #"retired", "technician", "services")
 
+data$job <- as.character(data$job)
+data$job[data$job=='admin.'] <- "admin"
+data$job <- as.factor(data$job)
+
 summary(data$job)
 
 jobPreClean <- data$job
