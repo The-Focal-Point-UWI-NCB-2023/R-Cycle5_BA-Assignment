@@ -1,5 +1,5 @@
 source('./scripts/prepData.R')
-path <- './scripts/analytics/'
+ipath <- './scripts/analytics/'
 
 library(corrplot)
 

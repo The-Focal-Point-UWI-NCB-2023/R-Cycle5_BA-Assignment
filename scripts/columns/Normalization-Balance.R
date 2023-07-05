@@ -12,7 +12,7 @@ data<- data %>%
   # Mutate function essentially  alters the content of a column.
   # In this case we Altering the deposit column to updated with min max normalized values 
   mutate(balance = as.integer(
-    ((balance - min.balance)/(max.balance - min.balance ) * (new.max - new.min) + new.min) , 3
+    ((balance - min.balance)/(max.balance - min.balance ) * (new.max - new.min) + new.min)
     #Formula for Min Max = normalized_value = (value - minimum_value) / (maximum_value - minimum_value) * (new_max - new_min) + new_min
     )
   )

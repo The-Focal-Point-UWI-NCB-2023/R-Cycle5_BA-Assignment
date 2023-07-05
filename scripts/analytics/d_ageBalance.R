@@ -4,7 +4,6 @@ avg.bal <- c()
 #average the balance
 for (i in 1:length(age.groups)){
   rows <- data[data$age == age.groups[i],]
-  print(rows)
   avg.bal[i] <- round(mean(rows$balance),2)
 }
 

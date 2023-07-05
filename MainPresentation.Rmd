@@ -33,13 +33,8 @@ library(lubridate)
 library(dplyr)
 library(scales)
 library(corrplot)
-<<<<<<< HEAD
-library(stringr)
-library(lubridate)
-=======
 library(stringr)  
 library(plotly)
->>>>>>> 3576fb7ad5296b9f527c186f55cb81596081f2be
 options("scipen"=100, digits = 22)
 ```
 

@@ -1,6 +1,8 @@
--   Unique ID number
+-   Data Type: Qualitative
 
--   Nominal Measurement (No order)
+-   Measurement: Nominal
+
+-   Unique ID number
 
 -   **CAN'T** remove, needed by bank
 

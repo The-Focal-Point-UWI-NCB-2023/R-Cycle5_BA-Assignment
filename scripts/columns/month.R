@@ -1,3 +1,4 @@
+library(ggplot2)
 #check for na and null values 
 str(data$month)
 month_na_sum <- sum(is.na(data$month))

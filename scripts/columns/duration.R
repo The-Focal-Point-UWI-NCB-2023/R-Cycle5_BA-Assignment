@@ -1,4 +1,3 @@
-
 #view the structure of the duration column
 str(data$duration)
 
