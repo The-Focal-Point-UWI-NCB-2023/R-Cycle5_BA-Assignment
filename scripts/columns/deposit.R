@@ -20,6 +20,8 @@ data$deposit <- ifelse(data$deposit>190000, 190000, data$deposit)
 data$avg.deposit <- NULL
 avg.job.deposit <- NULL
 avg.job.balance <- NULL
+data$deposit <- as.integer(data$deposit)
+data$deposit <- as.numeric(data$deposit)
 plot(density(data$deposit))
 plot(hist(data$deposit))
 str(data)
