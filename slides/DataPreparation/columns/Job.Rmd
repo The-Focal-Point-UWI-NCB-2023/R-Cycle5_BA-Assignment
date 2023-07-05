@@ -1,4 +1,6 @@
--   Categorical Measurement
+-   Data Type: Qualitative
+
+-   Measurement: Categorical
 
 -   11 Unique Values
 

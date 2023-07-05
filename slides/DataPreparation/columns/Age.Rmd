@@ -1,8 +1,9 @@
-### Slide Header 1
+-   Data Type: Qualitative
 
-```{r echo=TRUE}
-# Code Here
-print("Test Output")
+-   Measurement: Ordinal
+
+```{r echo=FALSE}
+str(data$age)
 ```
 
 ------------------------------------------------------------------------
