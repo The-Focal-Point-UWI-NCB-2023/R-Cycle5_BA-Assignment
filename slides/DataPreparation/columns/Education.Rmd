@@ -1,4 +1,4 @@
-# Education Preparation
+## Education Preparation
 
 -   This feature represents the highest level of education attained by each entity.
 
@@ -6,7 +6,7 @@
 
 ```{r echo=TRUE}
     unique(data$education)
-    ```
+```
 
 ## Summary
 
@@ -35,7 +35,6 @@ avg_balance <- data %>%
   group_by(education) %>%
   summarize(avg_balance = mean(balance, na.rm = TRUE))
 
-library(plotly)
 colors <- c("blue", "green", "red")
 plot <- plot_ly(data = avg_balance, x = ~education, y = ~avg_balance, type = "bar",
                 marker = list(color = colors),
