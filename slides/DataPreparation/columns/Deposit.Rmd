@@ -1,3 +1,7 @@
+-----------------------------------------------------------------------
+
+### Deposit
+
 - This feature represents the average yearly balance of the customer
 
 - Data Type: Quantitative
@@ -15,6 +19,8 @@ depositPreClean <- data$deposit
 
 ------------------------------------------------------------------------
 
+### Cleaning of Deposit 
+
 ```{r echo=TRUE}
 avg.job.deposit <- aggregate(deposit ~ job, data, mean, na.rm = TRUE)
 
@@ -29,6 +35,7 @@ data$deposit <- ifelse(data$deposit>190000, 190000, data$deposit)
 ```
 
 ------------------------------------------------------------------------
+
 
 ::: {style="display: flex;"}
 <div>

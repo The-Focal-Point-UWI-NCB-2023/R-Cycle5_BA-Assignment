@@ -1,19 +1,23 @@
 ------------------------------------------------------------------------
 
--   Data Type: Qualitative
+### Loan
 
--   Measurement: Categorical
+- This feature represents whether the customer has a personal loan.
+
+- Data Type: Qualitative
+
+- Measurement: Categorical
 
 ------------------------------------------------------------------------
 
-<h5>Checking For Empty Rows</h5>
+<h4>Checking For Empty Rows</h4>
 
 ```{r echo=TRUE}
 empty_rows <- is.na(data$loan)
 sum(empty_rows)
 ```
 
-<h5>Checking For Spaces</h5>
+<h4>Checking For Spaces</h4>
 
 ```{r echo=TRUE}
 space_in_row <- grepl("\\s", data$loan)
@@ -22,7 +26,7 @@ sum(space_in_row)
 
 ------------------------------------------------------------------------
 
-<h5>Check if all rows have the correct category</h5>
+<h4>Check if all rows have the correct category</h4>
 
 ```{r echo=TRUE}
 all(data$loan == "yes" | data$loan == "no")

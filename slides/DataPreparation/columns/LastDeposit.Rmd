@@ -1,8 +1,17 @@
+
+-----------------------------------------------------------------------
+
+## Last Deposit
+
 -   This feature represents the number of days since the last deposit.
 
 -   Data Type: Quantitative
 
 -   Measurement: Interval
+
+------------------------------------------------------------------------
+
+### Calculating Last Deposit
 
 ```{r echo=TRUE}
 #Convert to characters so that we can convert it to date
@@ -18,6 +27,8 @@ data$temp2 <- NULL
 ```
 
 ------------------------------------------------------------------------
+
+### Summary of Last Deposit
 
 ```{r echo = FALSE}
 options(digits = 1)
