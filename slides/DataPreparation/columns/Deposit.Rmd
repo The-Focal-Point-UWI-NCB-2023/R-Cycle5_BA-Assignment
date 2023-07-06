@@ -2,7 +2,7 @@
 
 ### Deposit
 
-- This feature represents the average yearly balance of the customer
+- This feature represents the average yearly balance of the customer.
 
 - Data Type: Quantitative
 
