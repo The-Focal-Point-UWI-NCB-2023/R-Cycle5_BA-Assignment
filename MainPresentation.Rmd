@@ -26,7 +26,7 @@ if (packageVersion('revealjs') <= '0.8') {
 }
 ```
 
-```{r echo=FALSE, results='hide'}
+```{r echo=FALSE, results='hide', message=FALSE}
 library(stringr)
 library(ggplot2)
 library(lubridate)
@@ -56,6 +56,12 @@ str(data)
 ```
 
 # Data Preparation & Cleaning
+
+## What is Data Preparation & Cleaning?
+
+-   Ensuring data integrity, accurate reports
+
+-   Fixing missing values, outliers, noise
 
 ```{r child='./slides/DataPreparation/DataPreparation.Rmd', cache=TRUE}
 ```
