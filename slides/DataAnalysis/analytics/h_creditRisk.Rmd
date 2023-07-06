@@ -21,7 +21,7 @@ knitr::include_graphics("./images/The_5_Cs_of_Credit-1.webp")
 
 -   Lower Score = Better [ 0 ]
 
--   Higher Score = Worse [ 10 ]
+-   Higher Score = Worse [ 12 ]
 
 ------------------------------------------------------------------------
 
@@ -117,7 +117,7 @@ $Character + Capacity + Capital + Collateral$
 
 -   Min - 0
 
--   Max - 10
+-   Max - 12
 
 ------------------------------------------------------------------------
 
@@ -129,11 +129,11 @@ $Character + Capacity + Capital + Collateral$
 | 2-4  | Low       |
 | 4-6  | Medium    |
 | 6-8  | High      |
-| 8-10 | Very High |
+| 8-12 | Very High |
 
 ```{r echo=FALSE}
 # Binning
-score.range <- c(-Inf, 2, 4, 6, 8, 10) #creating ranges for different levels of binning 0-2 - Very low, 2-4 Low etc
+score.range <- c(-Inf, 2, 4, 6, 8, 12) #creating ranges for different levels of binning 0-2 - Very low, 2-4 Low etc
 risk.labels <- c("very low", "low", "medium", "high", "very high") # Creating binning labels of "very low", "low", "medium", "high", "very high"
 data$creditRiskBin <- cut(data$creditRisk, breaks = score.range, labels = risk.labels, ) # Binning the data based on the range and labels
 
