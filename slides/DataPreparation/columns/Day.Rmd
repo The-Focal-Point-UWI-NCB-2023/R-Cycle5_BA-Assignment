@@ -1,6 +1,4 @@
-# Day Column Cleaning And Preperation
-
-## Cleaning And Preparing The Day Column
+## Day Preparation
 
 Checking For Null Elements
 ```{r echo=TRUE}

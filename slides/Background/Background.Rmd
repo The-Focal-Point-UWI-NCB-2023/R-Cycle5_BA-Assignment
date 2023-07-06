@@ -49,3 +49,11 @@
 -   Perform data analysis
 
 -   Configure slides to recreate data preparation and analysis report
+
+------------------------------------------------------------------------
+
+## Terms
+
+-   Factors
+
+-   Central Tendency
