@@ -163,18 +163,51 @@ title("Credit Risk Levels")
 
 ## Very Low Score
 
+```{r echo=FALSE}
+data$deposit <- round(data$deposit)
+data <- data[order(data$creditRisk), ]
+score <- data %>% select(age, job, marital, housing, loan, deposit, balance) %>% 
+                    filter(data$creditRiskBin == "very low")
+score
+```
+
 ------------------------------------------------------------------------
 
 ## Low Score
+
+```{r echo=FALSE}
+score <- data %>% select(age, job, marital, housing, loan, deposit, balance) %>% 
+                    filter(data$creditRiskBin == "low")
+score
+```
 
 ------------------------------------------------------------------------
 
 ## Medium Score
 
+```{r echo=FALSE}
+score <- data %>% select(age, job, marital, housing, loan, deposit, balance) %>% 
+                    filter(data$creditRiskBin == "medium")
+score
+
+```
+
 ------------------------------------------------------------------------
 
 ## High Score
 
+```{r echo=FALSE}
+score <- data %>% select(age, job, marital, housing, loan, deposit, balance) %>% 
+                    filter(data$creditRiskBin == "medium")
+score
+```
+
 ------------------------------------------------------------------------
 
 ## Very High Score
+
+```{r}
+score <- data %>% select(age, job, marital, housing, loan, deposit, balance) %>% 
+                    filter(data$creditRiskBin == "very high")
+score
+```
