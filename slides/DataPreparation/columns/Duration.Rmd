@@ -28,6 +28,21 @@ summary(data$duration)
     print(dur_na_sum)
     #find the sum of null values 
     dur_null_sum <- sum(is.null(data$duration))
+    ```
+
+------------------------------------------------------------------------
+
+## Summary of Duration
+
+-   conversion from SECONDS to MINUTES
+
+    ```{r echo=TRUE}
+    #install.packages("lubridate")
+   
+    #convert from seconds to minutes
+    data$duration_temp <- round(as.duration(data$duration) / dminutes(1))
+
+    data$duration <- round(as.duration(data$duration) / dminutes(1))
     print(dur_null_sum)
     ```
 

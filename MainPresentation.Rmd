@@ -33,8 +33,8 @@ library(lubridate)
 library(dplyr)
 library(scales)
 library(corrplot)
-library(stringr)  
 library(plotly)
+library(knitr)
 options("scipen"=100, digits = 22)
 ```
 
@@ -49,10 +49,8 @@ options("scipen"=100, digits = 22)
 data <- read.csv(file='./dataset.csv', stringsAsFactors = TRUE)
 ```
 
--   Customer Data
-
 ```{r, cache=TRUE}
-str(data)
+barplot(data$balance)
 ```
 
 # Data Preparation & Cleaning
