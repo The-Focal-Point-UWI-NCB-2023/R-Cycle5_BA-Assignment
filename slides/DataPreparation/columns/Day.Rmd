@@ -1,9 +1,10 @@
-- Data Type: Quantitative
-
-- Measurement: Interval
 ------------------------------------------------------------------------
 
-## Day Preparation
+-   Data Type: Quantitative
+
+-   Measurement: Interval
+
+------------------------------------------------------------------------
 
 Checking For Null Elements
 ```{r echo=TRUE}

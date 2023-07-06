@@ -50,6 +50,6 @@ data$creditRiskBin <- cut(data$creditRisk, breaks = score.range, labels = risk.l
 target.customers <- data %>% select(RefNum, creditRiskBin) %>% 
   filter(creditRiskBin == "very low" | creditRiskBin == "low")
 
-View(target.customers)
+#View(target.customers)
 summary(data$creditRiskBin)
 
