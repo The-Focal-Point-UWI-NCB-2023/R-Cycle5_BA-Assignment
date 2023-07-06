@@ -60,7 +60,7 @@
 
 ## Deposit {.unlisted .unnumbered}
 
--   Plot time-series graph(s) to show comparison between deposits made over 2 comparative periods within the data (month/quarter). Interpret and discuss the result.
+-   Time series graphs to show comparison between deposits made over 2 comparative periods within the data
 
 ------------------------------------------------------------------------
 

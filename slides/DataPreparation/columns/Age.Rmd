@@ -1,12 +1,12 @@
-  -----------------------------------------------------------------------
+------------------------------------------------------------------------
 
 ### Age
 
-- This feature represents the numeric age of the customer.
+-   This feature represents the numeric age of the customer.
 
-- Data Type: Qualitative
+-   Data Type: Qualitative
 
-- Measurement: Ordinal
+-   Measurement: Ratio
 
 ```{r echo=FALSE}
 str(data$age)

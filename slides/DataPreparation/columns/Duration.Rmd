@@ -113,7 +113,7 @@ plot(d_after,frame=FALSE, col = "Blue",main = 'Histogram of Duration (after clea
 
 ```{r echo=TRUE}
 avg_duration <- mean(data$duration)
-avg_duration <- round(avg_duration,2)
+avg_duration <- round(avg_duration)
 print(avg_duration)
 ```
 
