@@ -22,7 +22,7 @@ non.numeric <- any(!is.numeric(data$day))
 
 ------------------------------------------------------------------------
 
-#Checking if A Day is Invalid  
+## Checking if A Day is Invalid  
 ```{r echo=TRUE}
 months = 1:12
 names(months) = month.name

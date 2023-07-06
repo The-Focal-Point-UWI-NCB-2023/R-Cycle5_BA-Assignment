@@ -1,20 +1,30 @@
 <h3>Gathering Information on Individuals Loans</h3>
 
 ```{r echo=TRUE}
+
 mortgage.personal <- nrow(data
 [data$housing == 'yes' & data$loan == 'yes',])
-mortgage.personal
 
 one.loan <- nrow(data[xor(data$housing == 'yes', 
 data$loan == 'yes'),])
-one.loan
 
 no.loan <- nrow(data[data$housing == 'no' & data$loan == 'no',])
-no.loan
+
 ```
+### Loan Distribution Table
+```{r echo=FALSE, results='asis'}
+# Create a data frame with the category names and counts
+table_data <- data.frame(Category = c("Both Loans", "One Loan", "No Loan"),
+                         Count = c(mortgage.personal, one.loan, no.loan))
 
+# Generate the table using kable()
+table_output <- kable(table_data, format = "markdown", col.names = c("Category", "Count"))
+
+# Print the table
+print(table_output)
+#table_data
+```
 ------------------------------------------------------------------------
-
 
 <h3>Presenting Loan Information</h3>
 
