@@ -6,9 +6,8 @@
 
 -   **CAN'T** remove, needed by bank
 
-```{r}
+```{r echo=TRUE}
 str(data$RefNum)
-sum(data$RefNum[data$RefNum==""])# No blanks
 ```
 
 ------------------------------------------------------------------------
