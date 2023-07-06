@@ -26,9 +26,7 @@
 
 -   No more than 10% of the values should be adjusted
 
--   Risk score depends on balance
-
-    -   Some outliers could stay
+-   Some outliers necessary for analysis
 
 ------------------------------------------------------------------------
 
@@ -57,3 +55,11 @@
 -   Factors
 
 -   Central Tendency
+
+-   Outliers
+
+-   Sequicity
+
+-   Cyclical
+
+-   Noise
