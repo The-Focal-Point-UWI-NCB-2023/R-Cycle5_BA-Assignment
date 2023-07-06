@@ -30,6 +30,6 @@ ggplot(avg_job_deposit, aes(x = job, y = deposit,label=deposit)) +
 
 ## Summary of Findings
 
--   Job with **minimum** deposit: **Student**
+-   Job with **minimum** deposit: **Housemaid**
 
 -   Job with **maximum** deposit: **Self-employed**
