@@ -1,18 +1,33 @@
-```{r echo=TRUE}
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("./images/The_5_Cs_of_Credit-1.webp")
+```
+
+------------------------------------------------------------------------
+
+| C          | Column Name       |
+|------------|-------------------|
+| Character  | job, age, marital |
+| Capacity   | loan              |
+| Capital    | balance           |
+| Collateral | mortgage          |
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+```{r echo=FALSE}
+
 # Creating The weights for Job feature
 Job.Weights <- c("admin." = 1, "blue-collar" = 1, "entrepeneur" = 2, "housemaid" = 1,
                  "management" = 0, "retired" = 3,   "self-employed" = 2, "services" = 1, 
                  "student" = 3,"technician" = 1, "unemployed" = 3)
 #levels(data$job)
+
 # Creating The weights for Marital feature
 Marital.Weights <- c("single" = 1, "married" = 0, "divorced" = 1)
 #levels(data$marital)
 
-```
 
-------------------------------------------------------------------------
-
-```{r echo = TRUE}
 # Creating The weights for Age feature
 age.Weigths <- c("20-29" = 0, "30-39"= 0,  "40-49" = 1,  "50-60" = 2)
 
@@ -24,23 +39,13 @@ housing.weights <- c("no" = 0, "yes" = 1)
 loan.weights <- c("no" = 0, "yes" = 1)
 #levels(data$loan)
 
-```
 
-------------------------------------------------------------------------
-
-
-```{r echo = TRUE}
 #Calculating mean for each job and creating a Matrix 
 mean.balance <- aggregate(balance ~ job, data = data, FUN = mean)
 job.mean.matrix<- matrix(mean.balance$balance, nrow = nlevels(data$job), ncol = 1)
 row.names(job.mean.matrix) <- levels(data$job)
 colnames(job.mean.matrix) <- "Mean Balance"
-#student <- mean.balance$balance[mean_balance$job=="student"]
 
-```
-
-------------------------------------------------------------------------
-```{r echo = TRUE}
 
 # Applying Credit Rating Risk based on weights and criteria
 data$creditRisk <- Job.Weights[data$job] +
@@ -54,29 +59,23 @@ data$creditRisk <- Job.Weights[data$job] +
 
 summary(data$creditRisk)
 
-```
-
-
-------------------------------------------------------------------------
-```{r echo = TRUE}
-
+# Binning
 score.range <- c(-Inf, 2, 4, 6, 8, 12) #creating ranges for different levels of binning 0-2 - Very low, 2-4 Low etc
 risk.labels <- c("very low", "low", "medium", "high", "very high") # Creating binning labels of "very low", "low", "medium", "high", "very high"
 data$creditRiskBin <- cut(data$creditRisk, breaks = score.range, labels = risk.labels, ) # Binning the data based on the range and labels
 
-
 #Creating a new data frame with reference number and credit risk filtering customers with only low and very low risks
-target.customers <- data %>% select(RefNum, creditRiskBin) %>% 
-  filter(creditRiskBin == "very low" | creditRiskBin == "low")
+#target.customers <- data %>% select(RefNum, creditRiskBin) %>% 
+#  filter(creditRiskBin == "very low" | creditRiskBin == "low")
 
-View(target.customers)
+#View(target.customers)
 summary(data$creditRiskBin)
 
+
+# Counting the frequency of each credit risk level
+risk.counts.pie <- table(data$creditRiskBin)
+pie.colors <- c("lightblue", "lightgreen", "lightyellow", "orange", "lightcoral")
+pie(risk.counts.pie, labels = paste0(risk.labels, " (", round(100*risk.counts.pie/sum(risk.counts.pie), 0), "%)"), col = pie.colors)
+legend("topright", legend = risk.labels, fill = pie.colors, cex = 0.8)
+title("Credit Risk Levels")
 ```
-
-
-------------------------------------------------------------------------
-
-
-------------------------------------------------------------------------
-

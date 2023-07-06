@@ -23,13 +23,17 @@
 
 ### Job Preparation
 
-```{r echo=FALSE}
+-   Noise "" value
+
+```{r echo=TRUE}
 str(data$job)
 
 sum(is.na(data$job)) # No NAs
 ```
 
 ------------------------------------------------------------------------
+
+-   Converting admin**.** to admin
 
 ```{r echo=TRUE}
 # Removing . from admin
@@ -39,6 +43,8 @@ data$job <- as.factor(data$job)
 ```
 
 ------------------------------------------------------------------------
+
+-   Get the average balance per job
 
 ```{r echo=FALSE}
 avgBalancePerJob <- setNames(
@@ -55,6 +61,8 @@ plot(avgBalancePerJob$Balance ~ avgBalancePerJob$Job, xlab = "", ylab = "", main
 ```
 
 ------------------------------------------------------------------------
+
+-   Replace "" values with the closest match balance
 
 ```{r echo=TRUE}
 empty_rows <- which(data$job == "") # Empty Rows

@@ -16,7 +16,8 @@ new.max <- as.integer(max.balance/1000) # Setting new max value for normalized D
 #Normalization Based on Formula
 data<- data %>% 
   mutate(balance = as.integer(
-    ((balance - min.balance)/(max.balance - min.balance ) * (new.max - new.min) + new.min)
+    ((balance - min.balance)/(max.balance - min.balance ) 
+     * (new.max - new.min) + new.min)
     )
   )
 

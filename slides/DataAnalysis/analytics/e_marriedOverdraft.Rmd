@@ -1,4 +1,4 @@
-```{r echo=TRUE}
+```{r echo = FALSE}
 
 married.Cx <- data %>% select(everything()) %>%
   filter(marital == "married")
@@ -17,10 +17,8 @@ graphical.df$Percentage <- paste0(round
 
 ```
 
-------------------------------------------------------------------------
 
-
-```{r}
+```{r echo = FALSE}
 
 overdraft.chart <- ggplot(graphical.df, aes(x = "", y = Total, fill = Category)) +
   geom_bar(stat = "identity", width = 1, color = "white") +

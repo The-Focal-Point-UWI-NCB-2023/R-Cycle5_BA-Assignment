@@ -35,6 +35,7 @@ library(scales)
 library(corrplot)
 library(plotly)
 library(knitr)
+
 options("scipen"=100, digits = 22)
 ```
 
@@ -75,8 +76,8 @@ str(data)
 
 # Credit Risk Score
 
--   If the Bank wanted to launch a new loan product to target persons who may be considered to have the least credit risk, propose a metric to determine these persons. Use at least 3 features to justify/select your target profile. Example: RefNum \< X AND Married=T AND education=="Tertiary" Risk=Low.
--   Be prepared to explain why you made the decision on the variables used for determining the best person to target. This may be helped by investigating what banks generally use.
+-   The Bank wants to launch a new loan product to target persons who may be considered to have the least credit risk
+-   5 C's of Credit
 
 ------------------------------------------------------------------------
 
