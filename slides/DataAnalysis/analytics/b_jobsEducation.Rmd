@@ -7,7 +7,7 @@ dominant_edu <- aggregate(education ~ job, data, function(x) {
   paste(names(levels), collapse = ", ")
 })
 
-knitr::kable(dominant_edu[,], format="markdown",caption ='dominant educational level of each category of job')
+#knitr::kable(dominant_edu[,], format="markdown",caption ='dominant educational level of each category of job')
 ```
 
 ------------------------------------------------------------------------
@@ -45,5 +45,6 @@ ggplot(edu_count, aes(x = job, y = count, label=count, fill = education)) +
   xlab("Job") +
   ylab("Count") +
   ggtitle("Count of Education Levels by Job Category") +
-  theme(axis.text.x = element_text(angle=45,hjust=1))
+  theme(axis.text.x = element_text(angle=45,hjust=1)) 
+
 ```
