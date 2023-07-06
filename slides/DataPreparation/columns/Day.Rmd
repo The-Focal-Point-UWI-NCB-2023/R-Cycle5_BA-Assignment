@@ -1,3 +1,8 @@
+- Data Type: Quantitative
+
+- Measurement: Interval
+------------------------------------------------------------------------
+
 ## Day Preparation
 
 Checking For Null Elements

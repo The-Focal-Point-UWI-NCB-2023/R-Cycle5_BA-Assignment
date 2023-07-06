@@ -1,3 +1,7 @@
+- Data Type: Qualitative
+
+- Measurement: Categorical
+------------------------------------------------------------------------
 <h5>Checking For Empty Rows</h5>
 
 ```{r echo=TRUE}
