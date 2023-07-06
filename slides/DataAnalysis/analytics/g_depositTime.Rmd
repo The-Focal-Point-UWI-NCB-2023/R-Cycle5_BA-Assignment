@@ -8,34 +8,106 @@ MonthOne <- MonthOne[order(MonthOne$date), ]
 
 #Assigning start and end date to the time series
 MonthOneTs <- ts(MonthOne$deposit, start = decimal_date(ymd("2019-12-01")), end = decimal_date(ymd("2019-12-31")), frequency = 365 )
+dates.vector <- NULL
+#time(MonthOneTs)
+dates.vector <- c()
 
+#date_decimal(time(MonthOneTs)[1]) 
 
 #decimal <- 2009.11
-date_decimal(time(MonthOneTs)[1])
+#######################################################################
+for (i in 1:length(MonthOneTs)) {
+  dateval <- format(date_decimal(time(MonthOneTs)[i]), "%Y-%m-%d")
+  #print(dateval)
+  dates.vector <- c(dates.vector, dateval)
+}
 
-#MonthOne_df <- data.frame(date =date_decimal(time(MonthOneTs)), deposit = as.numeric(MonthOneTs))
 
-#data1 <- as.data.frame(MonthOneTs)
-#data1
-# Plotting the time series graph
-plot(MonthOneTs, type = "l", xlab = "Date", ylab = "Deposit")
+############################################################################
+
+MonthOne_df <- data.frame(date = as.Date(dates.vector), deposit = as.numeric(MonthOneTs))
+library(plotly)
+fig <- plot_ly(MonthOne_df, type = 'scatter', mode = 'lines')%>%
+  add_trace(x = ~date, y = ~deposit, name = 'Deposit')%>%
+  layout(showlegend = F)
+options(warn = -1)
+
+fig <- fig %>%
+  layout(
+         xaxis = list(zerolinecolor = '#ffff',
+                      zerolinewidth = 2,
+                      gridcolor = 'ffff'),
+         yaxis = list(zerolinecolor = '#ffff',
+                      zerolinewidth = 2,
+                      gridcolor = 'ffff'),
+         
+         plot_bgcolor='rgba(0,0,0,0)',
+         title = 'Time Series of Deposits - December')
+
+fig
+#print(summary(MonthOne_df))
 
 
 ```
 
 ------------------------------------------------------------------------
 
-### Time Series January
-
+### Time Series of August
 
 ```{r}
-# December Will be the second Month
-MonthTwo <- filter(data, (as.Date(data$date) > as.Date('2019-01-01')) & (as.Date(data$date) <= as.Date('2019-01-31')))
+# August Will be the second Month
+MonthTwo <- filter(data, (as.Date(data$date) > as.Date('2019-08-01')) & (as.Date(data$date) <= as.Date('2019-09-01'))) #January
 
-MonthTwo <- MonthTwo[order(MonthTwo$date),]
+#Sorting the days of the Month in Order
+MonthTwo <- MonthTwo[order(MonthTwo$date), ]
 
-MonthTwoTs <- ts(MonthTwo$deposit, start = decimal_date(ymd("2019-01-01")), end = decimal_date(ymd("2019-01-31")), frequency = 365) #December
+#Assigning start and end date to the time series
+MonthTwoTs <- ts(MonthTwo$deposit, start = decimal_date(ymd("2019-08-01")), end = decimal_date(ymd("2019-09-01")), frequency = 365 )
+dates.vector <- NULL
+#time(MonthOneTs)
+dates.vector <- c()
 
-# Plotting the time series graph
-plot(MonthTwoTs, type = "l", xlab = "Date", ylab = "Deposit") 
+#date_decimal(time(MonthOneTs)[1]) 
+
+#decimal <- 2009.11
+#######################################################################
+for (i in 1:length(MonthTwoTs)) {
+  dateval <- format(date_decimal(time(MonthTwoTs)[i]), "%Y-%m-%d")
+  #print(dateval)
+  dates.vector <- c(dates.vector, dateval)
+}
+
+
+############################################################################
+
+MonthTwo_df <- data.frame(date = as.Date(dates.vector), deposit = as.numeric(MonthTwoTs))
+#library(plotly)
+fig <- plot_ly(MonthTwo_df, type = 'scatter', mode = 'lines')%>%
+  add_trace(x = ~date, y = ~deposit, name = 'Deposit', line = list(color = 'green'))%>%
+  layout(showlegend = F)
+options(warn = -1)
+
+fig <- fig %>%
+  layout(
+         xaxis = list(zerolinecolor = '#ffff',
+                      zerolinewidth = 2,
+                      gridcolor = 'ffff'),
+         yaxis = list(zerolinecolor = '#ffff',
+                      zerolinewidth = 2,
+                      gridcolor = 'ffff'),
+         
+         plot_bgcolor='rgba(0,0,0,0)',
+         title = 'Time Series of Deposits - August')
+
+fig
 ```
+
+------------------------------------------------------------------------
+
+## Findings
+
+-   We saw spikes in the month of December on the 25th.
+
+-   Around August 31st there was a spike in deposits suggesting back to school shopping.
+
+-   On Average Spending in August was Higher than that of December.
