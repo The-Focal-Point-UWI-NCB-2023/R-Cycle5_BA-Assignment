@@ -4,8 +4,6 @@
 options(digits=1)
 avg_job_deposit <- aggregate(deposit ~ job, data, mean, na.rm = TRUE)
 avg_job_deposit$deposit <- round(avg_job_deposit$deposit,2)
-knitr::kable(avg_job_deposit[,], format="markdown",caption ='Table showing the average deposit per job category')
-options(digits=22)
 ```
 
 ------------------------------------------------------------------------
@@ -19,7 +17,7 @@ ggplot(avg_job_deposit, aes(x = job, y = deposit,label=deposit)) +
   geom_bar(stat = "identity", fill = "blue") +
   geom_bar(data = subset(avg_job_deposit, deposit == max(deposit)), fill = "red", stat = "identity")+
   geom_bar(data = subset(avg_job_deposit, deposit == min(deposit)), fill = "black", stat = "identity")+
-  geom_text(size = 3, position = position_stack(vjust=1.09)) +
+  geom_text(size = 3, position = position_stack(vjust=1.08)) +
   xlab("Job") +
   ylab("Average Deposit") +
   ggtitle("Average Deposits by Job Category")+
