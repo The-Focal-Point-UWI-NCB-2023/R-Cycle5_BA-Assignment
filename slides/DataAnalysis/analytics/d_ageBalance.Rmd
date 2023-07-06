@@ -1,6 +1,4 @@
-### Highest Average Age Balance Data Retrieval
-
-```{r echo=TRUE, eval=TRUE}
+```{r echo=FALSE, eval=TRUE}
 age.groups.temp <- c("20-29", "30-39", "40-49", "50-60")
 avg.bal <- c()
 
@@ -9,20 +7,45 @@ for (i in 1:length(age.groups)){
   rows <- data[data$age == age.groups[i],]
   avg.bal[i] <- round(mean(rows$balance),2)
 }
+
+avg.df <- data.frame(Age.Group = age.groups.temp, Average.Balance = avg.bal)
 ```
 
-### Average Age Balance Data Results
-```{r echo = FALSE}
+### Average Balance for Age 
+
+```{r include=FALSE}
 print(c("Age Group:",age.groups.temp[which(avg.bal == max(avg.bal))] ))
 print(c("Max Average Balance: ",max(avg.bal)))
 ```
 
+-   <div>
+
+    ```{r echo=FALSE}
+    #barplot(avg.bal, names.arg = age.groups.temp, xlab ="Age Group", 
+           # ylim = c(0, max(avg.bal) + 20),
+           # ylab ="Average Balance", col ="lightblue", 
+            # main ="Average Balance Between Age Groups")
+    color.palette <- c('rgb(31,219,180)', 'rgb(12,127,14)', 'rgb(255,187,120)', 'rgb(214,39,40)',
+                       'rgb(148,103,189)','rgb(140,86,75)', 'rgb(31,119,180)', 'rgb(127,127,127)',
+                       'rgb(188,189,34)', 'rgb(23,190,207)',
+                       'rgb(174,199,232)')
+
+    barfig.bal <- plot_ly(avg.df, x = ~Age.Group, y = ~Average.Balance, type = 'bar',
+                          text = ~Average.Balance, textposition = 'auto',
+                          marker = list(color = color.palette))
+
+    barfig.bal <- barfig.bal %>% layout(title = "Average Balance Between Age Groups",
+                                        xaxis = list(title = "Age Group"),
+                                        yaxis = list(title = "Average Balance"))
+
+    barfig.bal
+
+
+
+    ```
+
+    </div>
+
 ------------------------------------------------------------------------
 
-```{r echo=FALSE}
-barplot(avg.bal, names.arg = age.groups.temp, xlab ="Age Group", 
-        ylim = c(0, max(avg.bal) + 20),
-        ylab ="Average Balance", col ="lightblue", 
-        main ="Average Balance Between Age Groups")
-
-```
+## 
