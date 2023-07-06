@@ -1,12 +1,21 @@
-### Slide Header 1
+<h5>Checking For Empty Rows</h5>
 
 ```{r echo=TRUE}
-# Code Here
-print("Test Output")
+empty_rows <- is.na(data$loan)
+sum(empty_rows)
+```
+
+<h5>Checking For Spaces</h5>
+
+```{r echo=TRUE}
+space_in_row <- grepl("\\s", data$loan)
+sum(space_in_row)
 ```
 
 ------------------------------------------------------------------------
 
-### Slide Header 2
+<h5>Check if all rows have the correct category</h5>
 
--   Horizontal Rules Separate Slides
+```{r echo=TRUE}
+all(data$loan == "yes" | data$loan == "no")
+```
