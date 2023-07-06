@@ -46,28 +46,3 @@ print(num_of_invalid)
 ```
 
 ------------------------------------------------------------------------
-
-## Visualization of Months
-
--   Bar graph
-
-    -   used to show distribution data
-    -   The following shows the total number of deposits made for each month
-
-------------------------------------------------------------------------
-
-```{r echo=FALSE}
-options(digits=4)
-sum_deposits_per_month <- aggregate(deposit ~ month, data, sum)
-sum_deposits_per_month$deposit <- as.integer(sum_deposits_per_month$deposit)
-ggplot(sum_deposits_per_month, aes(x = month, y = deposit, label=deposit)) +
-  geom_bar(stat = "identity", fill = "blue") +
-  geom_bar(data = subset(sum_deposits_per_month, deposit == max(deposit)), fill = "red", stat = "identity")+
-  geom_text(size = 3, position = position_stack(vjust=1.02)) +
-  xlab("Months") +
-  ylab("Amount of Deposits") +
-  ggtitle("Amount of Deposits per month") +
-  theme(plot.title = element_text(hjust = 0.5))
-```
-
-------------------------------------------------------------------------
