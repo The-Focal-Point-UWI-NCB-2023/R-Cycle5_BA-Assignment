@@ -1,12 +1,22 @@
-### Slide Header 1
+```{r echo=FALSE}
 
-```{r echo=TRUE}
-# Code Here
-print("Test Output")
+depBal_matrix <- cor(data[, c('deposit','balance')])
+corrplot(depBal_matrix,method = 'ellipse')
 ```
 
 ------------------------------------------------------------------------
 
-### Slide Header 2
+```{r echo=FALSE}
 
--   Horizontal Rules Separate Slides
+#scatter plot for correlation
+plot(data$deposit, data$balance, 
+     xlab = "Deposit", ylab = "Balance",
+     main = "Scatter Plot of Deposit and Balance")
+```
+
+------------------------------------------------------------------------
+
+- Positive Correlation    
+
+- As the deposit increases the balance increases.
+- As the balance decreases the deposit decreases.

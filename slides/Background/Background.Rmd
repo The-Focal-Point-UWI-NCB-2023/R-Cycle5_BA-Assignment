@@ -1,2 +1,51 @@
+-   Bank CB seeks to improve its customer targeting and develop new business lines
 
+-   They want to use the data they have collected so that they can make informed (data-driven) business decisions
 
+------------------------------------------------------------------------
+
+## Problem Definition
+
+-   They want assistance in the form of preliminary insights and answers to their question using the data they have
+
+-   The task involves working in a team to analyze and prepare the data for more complex analysis, uncover preliminary insights, and answer key questions.
+
+------------------------------------------------------------------------
+
+## Assumptions
+
+-   No joint accounts
+
+-   Monetary values should be preserved
+
+-   Longer call duration means more customer interest
+
+------------------------------------------------------------------------
+
+## Constraints
+
+-   No more than 10% of the values should be adjusted
+
+-   Risk score depends on balance
+
+    -   Some outliers could stay
+
+------------------------------------------------------------------------
+
+## Technology Used
+
+-   R - data analytics, preparation
+
+-   R Markdown - slides
+
+    -   revealjs
+
+------------------------------------------------------------------------
+
+## Our Approach
+
+-   Perform column by column data preparation
+
+-   Perform data analysis
+
+-   Configure slides to recreate data preparation and analysis report
