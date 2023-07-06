@@ -29,6 +29,7 @@ summary(data$duration)
 
     #find the sum of null values 
     dur_null_sum <- sum(is.null(data$duration))
+    print(dur_null_sum)
     ```
 
 ------------------------------------------------------------------------
@@ -42,53 +43,75 @@ summary(data$duration)
        
     #convert from seconds to minutes
     data$duration_temp <- round(as.duration(data$duration) / dminutes(1))
-
     data$duration <- round(as.duration(data$duration) / dminutes(1))
-    print(dur_null_sum)
     ```
 
-------------------------------------------------------------------------
-
-## Visualization of Duration
-
 ```{r echo=FALSE}
-Duration <- data$duration
-duration.hist <- hist(Duration, main = 'Histogram of Duration (before cleaning)')
+data$duration_before <- data$duration
+data$duration <- data$duration_temp
 
+data$duration <- ifelse(data$duration>12, mean(data$duration), data$duration)
 ```
 
 ------------------------------------------------------------------------
 
 ## Visualization of Duration
+
+::: {style="display: flex;"}
+<div>
+
+```{r echo=FALSE}
+Duration <- data$duration_before
+duration.hist_before <- hist(data$duration_before, main = 'Histogram of Duration (before cleaning)')
+```
+
+</div>
+
+<div>
+
+```{r echo=FALSE}
+Duration <- data$duration
+duration.hist_after <- hist(Duration,main = 'Histogram of Duration (after cleaning and conversion)')
+```
+
+</div>
+:::
+
+------------------------------------------------------------------------
+
+## Visualization of Duration
+
+::: {style="display: flex;"}
+<div>
 
 ```{r echo=FALSE}
 
 #density plot for alternate visualization
-Duration <- data$duration
-d <- density(Duration,na.rm = T)
-plot(d,frame=FALSE, col = "Blue",main = 'Density plot of Duration (before cleaning)')
+Duration <- data$duration_before
+d_before <- density(data$duration_before,na.rm = T)
+plot(d_before,frame=FALSE, col = "Blue",main = 'Density plot of Duration (before cleaning)')
 ```
+
+</div>
+
+<div>
+
+```{r echo=FALSE}
+
+d_after <- density(data$duration,na.rm = T)
+plot(d_after,frame=FALSE, col = "Blue",main = 'Histogram of Duration (after cleaning and conversion)')
+```
+
+</div>
+:::
 
 ------------------------------------------------------------------------
 
-## Visualization of Duration
+## Summary of Duration
 
--   conversion from SECONDS to MINUTES
-
-```{r echo=FALSE}
-data$duration <- ifelse(data$duration>12, mean(data$duration), data$duration)
-
-Duration <- data$duration
-duration.hist <- hist(Duration,main = 'Histogram of Duration (after cleaning and conversion)')
-```
-
-------------------------------------------------------------------------
-
-## Visualization of Duration
-
-```{r echo=FALSE}
-d <- density(data$duration,na.rm = T)
-plot(d,frame=FALSE, col = "Blue",main = 'Density plot of Duration (after cleaning and conversion)')
+```{r echo=TRUE}
+avg_duration <- round(mean(data$duration),2)
+print(avg_duration)
 ```
 
 ------------------------------------------------------------------------
