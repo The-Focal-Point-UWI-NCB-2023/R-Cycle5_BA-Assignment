@@ -21,7 +21,7 @@ no.loan
 ```{r echo=FALSE}
 chart.data <- c(mortgage.personal,one.loan,no.loan )
 
-piepercent<- round(100*chart.data/sum(chart.data), 1)
+piepercent<- paste0(round(100*chart.data/sum(chart.data), 0),"%")
 
 labels <- c("Both_Loans", "OneLoan", "NoLoan")
 

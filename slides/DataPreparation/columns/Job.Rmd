@@ -29,6 +29,15 @@ str(data$job)
 
 ------------------------------------------------------------------------
 
+```{r echo=TRUE}
+# Removing . from admin
+data$job <- as.character(data$job)
+data$job[data$job=='admin.'] <- "admin"
+data$job <- as.factor(data$job)
+```
+
+------------------------------------------------------------------------
+
 ```{r echo=FALSE}
 avgBalancePerJob <- setNames(
   aggregate(
