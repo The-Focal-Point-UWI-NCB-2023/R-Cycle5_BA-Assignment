@@ -39,7 +39,7 @@ summary(data$duration)
 
     ```{r echo=TRUE}
     #install.packages("lubridate")
-   
+       
     #convert from seconds to minutes
     data$duration_temp <- round(as.duration(data$duration) / dminutes(1))
 
@@ -76,9 +76,6 @@ plot(d,frame=FALSE, col = "Blue",main = 'Density plot of Duration (before cleani
 -   conversion from SECONDS to MINUTES
 
 ```{r echo=FALSE}
-
-data$duration <- round(as.duration(data$duration) / dminutes(1))
-
 data$duration <- ifelse(data$duration>12, mean(data$duration), data$duration)
 
 Duration <- data$duration
