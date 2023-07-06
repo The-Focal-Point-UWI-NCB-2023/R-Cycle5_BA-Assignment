@@ -26,6 +26,7 @@ summary(data$duration)
     #find the sum of NA values 
     dur_na_sum <- sum(is.na(data$duration))
     print(dur_na_sum)
+
     #find the sum of null values 
     dur_null_sum <- sum(is.null(data$duration))
     print(dur_null_sum)
@@ -35,25 +36,47 @@ summary(data$duration)
 
 ## Visualization of Duration
 
--   conversion from SECONDS to MINUTES
-
--   Histogram
-
-    -   used to show distribution of data
-
-------------------------------------------------------------------------
-
 ```{r echo=FALSE}
-hist(data$duration)
+Duration <- data$duration
+duration.hist <- hist(Duration, main = 'Histogram of Duration (before cleaning)')
+
 ```
 
 ------------------------------------------------------------------------
 
 ## Visualization of Duration
 
--   Density Plot:
+```{r echo=FALSE}
 
-    ```{r echo=FALSE}
-    d <- density(data$duration,na.rm = T)
-    plot(d,frame=FALSE, col = "Blue",main="Duration")
-    ```
+#density plot for alternate visualization
+Duration <- data$duration
+d <- density(Duration,na.rm = T)
+plot(d,frame=FALSE, col = "Blue",main = 'Density plot of Duration (before cleaning)')
+```
+
+------------------------------------------------------------------------
+
+## Visualization of Duration
+
+-   conversion from SECONDS to MINUTES
+
+```{r echo=FALSE}
+
+data$duration <- round(as.duration(data$duration) / dminutes(1))
+
+data$duration <- ifelse(data$duration>12, mean(data$duration), data$duration)
+
+Duration <- data$duration
+duration.hist <- hist(Duration,main = 'Histogram of Duration (after cleaning and conversion)')
+```
+
+------------------------------------------------------------------------
+
+## Visualization of Duration
+
+```{r echo=FALSE}
+d <- density(data$duration,na.rm = T)
+plot(d,frame=FALSE, col = "Blue",main = 'Density plot of Duration (after cleaning and conversion)')
+```
+
+------------------------------------------------------------------------
