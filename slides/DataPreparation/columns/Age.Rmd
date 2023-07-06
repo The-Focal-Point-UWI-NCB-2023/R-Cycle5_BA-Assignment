@@ -33,6 +33,7 @@ hist(agePreClean, main="Age Before Cleaning", xlab="Age")
 <div>
 
 ```{r echo=FALSE}
+cleanedAge <- data$age
 hist(data$age, main="Age After Cleaning", xlab="Age")
 ```
 
@@ -68,9 +69,23 @@ data$age <- as.factor(ifelse(
 
 ------------------------------------------------------------------------
 
+::: {style="display: flex;"}
+<div>
+
 ```{r echo=FALSE}
-plot(data$age, main="Age after Discritization")
+hist(cleanedAge, main="Age Before Discritization", xlab="Age")
 ```
+
+</div>
+
+<div>
+
+```{r echo=FALSE}
+plot(data$age, main="Age after Discritization", xlab="Age")
+```
+
+</div>
+:::
 
 ```{r echo=FALSE, results='hide'}
 data$temp <- NULL
