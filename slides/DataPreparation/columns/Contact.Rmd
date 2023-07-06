@@ -1,11 +1,10 @@
 ------------------------------------------------------------------------
+
 ### Contact
 
--   No information on what this is
+- No information on what this is
 
--   Removed
-
-------------------------------------------------------------------------
+- Removed
 
 ```{r echo=TRUE}
 data$contact <- NULL
