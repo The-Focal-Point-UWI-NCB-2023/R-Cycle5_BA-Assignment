@@ -1,6 +1,8 @@
-- Data Type: Quantitative
+-   This feature represents the number of days since the last deposit.
 
-- Measurement: Interval
+-   Data Type: Quantitative
+
+-   Measurement: Interval
 
 ```{r echo=TRUE}
 #Convert to characters so that we can convert it to date
@@ -23,6 +25,3 @@ summary(data$last_deposit)
 options(digits =22)
 
 ```
-
-
-

@@ -1,3 +1,5 @@
+- This feature represents the average yearly balance of the customer
+
 - Data Type: Quantitative
 
 - Measurement: Ratio
@@ -7,28 +9,8 @@ str(data$deposit)
 options(digits = 1)
 summary(data$deposit)
 options(digits = 22)
-
-```
-
-------------------------------------------------------------------------
-
-```{r echo = FALSE}
 depositPreClean <- data$deposit
-hist(depositPreClean,main="Histogram of Deposit Before Cleaning")
-```
 
-------------------------------------------------------------------------
-
-```{r}
-d <- density(depositPreClean,na.rm = T)
-plot(d,frame=FALSE, col = "Blue",main="Density of Deposit Before Cleaning")
-
-```
-
-------------------------------------------------------------------------
-
-```{r}
-boxplot(depositPreClean,main="Box Plot of Deposit Before Cleaning")
 ```
 
 ------------------------------------------------------------------------
@@ -48,30 +30,22 @@ data$deposit <- ifelse(data$deposit>190000, 190000, data$deposit)
 
 ------------------------------------------------------------------------
 
-```{r echo = TRUE}
-#After Cleaning
-data$avg.deposit <- NULL
-avg.job.deposit <- NULL
-avg.job.balance <- NULL
-d <- NULL
+::: {style="display: flex;"}
+<div>
+
+```{r echo=FALSE}
+boxplot(depositPreClean,main="Box Plot of Deposit Before Cleaning")
 ```
 
-------------------------------------------------------------------------
+</div>
 
-```{r}
-hist(data$deposit,main = "Histogram of Deposit After Cleaning")
-```
+<div>
 
-------------------------------------------------------------------------
-
-```{r}
-plot(density(data$deposit),main = "Density Plot of Deposit After Cleaning")
-
-```
-
-------------------------------------------------------------------------
-
-```{r}
+```{r echo=FALSE}
 boxplot(data$deposit,main="Box Plot of Deposit After Cleaning")
-
 ```
+
+</div>
+:::
+
+------------------------------------------------------------------------
