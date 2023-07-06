@@ -17,26 +17,35 @@ graphical.df$Percentage <- paste0(round
 
 ```
 
+-   <div>
 
-```{r echo = FALSE}
+    ```{r echo = FALSE}
 
-overdraft.chart <- ggplot(graphical.df, aes(x = "", y = Total, fill = Category)) +
-  geom_bar(stat = "identity", width = 1, color = "white") +
-  coord_polar("y", start = 0) +
-  labs(title = "Percentage of Married Customers in Overdraft") +
-  theme_void() +
-  geom_text(aes(label = Percentage), position = position_stack(vjust = 0.5))
+    #overdraft.chart <- ggplot(graphical.df, aes(x = "", y = Total, fill = Category)) +
+      #geom_bar(stat = "identity", width = 1, color = "white") +
+      #coord_polar("y", start = 0) +
+      #labs(title = "Percentage of Married Customers in Overdraft") +
+      #theme_void() +
+      #geom_text(aes(label = Percentage), position = position_stack(vjust = 0.5)) +
+      #scale_fill_manual(values = c("red", "blue"), breaks = c("overdraft", "not in overdraft"))
 
-overdraft.chart
+    #overdraft.chart
 
-#length(boxplot.stats(deposit)$out)
+    overdraft.chart <- plot_ly(graphical.df, labels = ~Category, values = ~Total, type = 'pie',                            textinfo='label+percent',
+                   insidetextorientation='radial')
+    overdraft.chart <- overdraft.chart %>% layout(title = 'Percentage of Married Customers in Overdraft',
+             xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+             yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
 
-```
+    overdraft.chart
+
+    ```
+
+    </div>
 
 ------------------------------------------------------------------------
 
-- Most Married Customers are good with money management.
-- Most Married Customers are not in overdraft.
+-   Most Married Customers are good with money management.
+-   Most Married Customers are not in overdraft.
 
 ------------------------------------------------------------------------
-
