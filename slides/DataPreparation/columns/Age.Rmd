@@ -13,7 +13,8 @@ str(data$age)
 ```{r echo=FALSE, results='hide'}
 agePreClean <- data$age
 ```
--   Capping values at 60
+
+#### Capping values at 60
 
 ```{r echo=TRUE}
 data$age[data$age > 60] <- 60
