@@ -8,8 +8,6 @@
 
 - Measurement: Nominal
 
-- Unique ID number
-
 - **CAN'T** remove, needed by bank
 
 ```{r echo=TRUE}
