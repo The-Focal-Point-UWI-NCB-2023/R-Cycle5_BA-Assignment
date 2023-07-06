@@ -54,7 +54,7 @@ knitr::kable(sort(age.Weigths), col.names = c("Weight"), caption = "Table Showin
 
 ```{r echo=FALSE}
 # Creating The weights for Housing feature
-housing.weights <- c("no" = 0, "yes" = 1)
+housing.weights <- c("no" = 1, "yes" = 0)
 knitr::kable(sort(housing.weights), col.names = c("Weight"), caption = "Table Showing Weightings of Mortgage")
 
 ```
