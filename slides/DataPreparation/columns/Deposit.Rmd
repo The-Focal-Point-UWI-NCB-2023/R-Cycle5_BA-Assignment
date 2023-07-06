@@ -43,7 +43,7 @@ data$deposit <- ifelse(is.na(data$deposit),
                        round(data$avg.deposit,1), 
                        round(data$deposit,1))
 
-data$deposit <- ifelse(data$deposit>100000, 100000, data$deposit)
+data$deposit <- ifelse(data$deposit>190000, 190000, data$deposit)
 ```
 
 ------------------------------------------------------------------------

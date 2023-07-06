@@ -1,10 +1,6 @@
 ------------------------------------------------------------------------
 
-### Why Normalize?
-
-In order to have smaller values to work with and to preserve the mean of the data-set we decided to perform min-max normalization on the balance and deposit features of our data-set.
-
-------------------------------------------------------------------------
+### Normalizing Balance
 
 ```{r echo = TRUE, eval=FALSE}
 
