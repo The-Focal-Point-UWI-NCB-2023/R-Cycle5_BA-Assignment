@@ -1,10 +1,14 @@
-## Month Preparation
+### 
 
-This feature indicates the last deposit month of the year for the customer
+------------------------------------------------------------------------
 
-Measurement: Quantitative (Categorical)
+### Month
 
-Data type: Factor
+-   This feature indicates the last deposit month of the year for the customer
+
+-   Measurement: Quantitative (Categorical)
+
+-   Data type: Factor
 
 ```{r echo=TRUE}
 #view the structure of the duration column  
@@ -13,9 +17,9 @@ str(data$month)
 
 ------------------------------------------------------------------------
 
-### Summary of Month Data
+### Month Preparation
 
--   Pre-clean Checks
+#### Checking for NA and NULL values
 
 ```{r echo=TRUE}
 #find the sum of NA values  
@@ -31,7 +35,9 @@ print(month_null_sum)
 
 ------------------------------------------------------------------------
 
-### Summary of Month Data
+### Month Preparation
+
+#### Checking if all months are valid months
 
 ```{r echo=TRUE}
 #create a list of valid months

@@ -1,50 +1,52 @@
-## Duration Preparation
+------------------------------------------------------------------------
 
-This feature shows the time spent (seconds) on the last call.
+### Duration Preparation
 
-Measurement: Quantitative (Interval)
+-   This feature shows the time spent (seconds) on the last call.
 
-Data type: Numeric
+-   Measurement: Quantitative (Interval)
 
-```{r echo=TRUE}
+-   Data type: Numeric
+
+```{r echo=FALSE}
 #view the structure of the duration column 
-str(data$duration)
+#str(data$duration)
 ```
 
 ```{r echo=TRUE}
-#view the structure of the duration column 
+#view the summary of the duration column 
 summary(data$duration)
 ```
 
 ------------------------------------------------------------------------
 
-### Summary of Duration
+### Preparation of Duration
 
--   Pre-clean Checks
+#### Checking for NA and NULL values
 
-    ```{r echo=TRUE}
-    #find the sum of NA values 
-    dur_na_sum <- sum(is.na(data$duration))
-    print(dur_na_sum)
+```{r echo=TRUE}
+#find the sum of NA values 
+dur_na_sum <- sum(is.na(data$duration))
+print(dur_na_sum)
 
-    #find the sum of null values 
-    dur_null_sum <- sum(is.null(data$duration))
-    print(dur_null_sum)
-    ```
+#find the sum of null values 
+dur_null_sum <- sum(is.null(data$duration))
+print(dur_null_sum)
+```
 
 ------------------------------------------------------------------------
 
-## Summary of Duration
+### Preparation of Duration
 
--   conversion from SECONDS to MINUTES
+#### conversion from SECONDS to MINUTES
 
-    ```{r echo=TRUE}
-    #install.packages("lubridate")
-       
-    #convert from seconds to minutes
-    data$duration_temp <- round(as.duration(data$duration) / dminutes(1))
-    data$duration <- round(as.duration(data$duration) / dminutes(1))
-    ```
+```{r echo=TRUE}
+#install.packages("lubridate")
+   
+#convert from seconds to minutes
+data$duration_temp <- round(as.duration(data$duration) / dminutes(1))
+data$duration <- round(as.duration(data$duration) / dminutes(1))
+```
 
 ```{r echo=FALSE}
 data$duration_before <- data$duration
@@ -55,7 +57,7 @@ data$duration <- ifelse(data$duration>12, mean(data$duration), data$duration)
 
 ------------------------------------------------------------------------
 
-## Visualization of Duration
+### Visualization of Duration
 
 ::: {style="display: flex;"}
 <div>
@@ -79,7 +81,7 @@ duration.hist_after <- hist(Duration,main = 'Histogram of Duration (after cleani
 
 ------------------------------------------------------------------------
 
-## Visualization of Duration
+### Visualization of Duration
 
 ::: {style="display: flex;"}
 <div>
@@ -107,10 +109,11 @@ plot(d_after,frame=FALSE, col = "Blue",main = 'Histogram of Duration (after clea
 
 ------------------------------------------------------------------------
 
-## Summary of Duration
+### Summary of Duration
 
 ```{r echo=TRUE}
-avg_duration <- round(mean(data$duration),2)
+avg_duration <- mean(data$duration)
+avg_duration <- round(avg_duration,2)
 print(avg_duration)
 ```
 

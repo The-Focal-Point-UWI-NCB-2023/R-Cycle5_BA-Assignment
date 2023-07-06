@@ -52,14 +52,12 @@
 
 ## Terms
 
--   Factors
+-   Factors: data type for categorical data
 
 -   Central Tendency
 
--   Outliers
+-   Outliers: extreme high or low values
 
--   Sequicity
+-   Cyclical: no repeat of fluctuations over a period
 
--   Cyclical
-
--   Noise
+-   Noise: random and unrelated values
