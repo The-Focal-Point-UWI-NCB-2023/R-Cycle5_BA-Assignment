@@ -4,6 +4,8 @@ knitr::include_graphics("./images/The_5_Cs_of_Credit-1.webp")
 
 ------------------------------------------------------------------------
 
+## Metrics
+
 | C          | Column Name       |
 |------------|-------------------|
 | Character  | job, age, marital |
@@ -13,38 +15,83 @@ knitr::include_graphics("./images/The_5_Cs_of_Credit-1.webp")
 
 ------------------------------------------------------------------------
 
+## Risk Score Weighting
+
+-   Done by applying score to each metric
+
+-   Lower Score = Better [ 0 ]
+
+-   Higher Score = Worse [ 12 ]
+
 ------------------------------------------------------------------------
 
 ```{r echo=FALSE}
-
 # Creating The weights for Job feature
-Job.Weights <- c("admin." = 1, "blue-collar" = 1, "entrepeneur" = 2, "housemaid" = 1,
+Job.Weights <- c("admin" = 1, "blue-collar" = 1, "entrepeneur" = 2, "housemaid" = 1,
                  "management" = 0, "retired" = 3,   "self-employed" = 2, "services" = 1, 
                  "student" = 3,"technician" = 1, "unemployed" = 3)
-#levels(data$job)
 
+knitr::kable(sort(Job.Weights), col.names = c("Weight"), caption = "Table Showing Weightings of Jobs")
+```
+
+------------------------------------------------------------------------
+
+```{r echo=FALSE}
 # Creating The weights for Marital feature
 Marital.Weights <- c("single" = 1, "married" = 0, "divorced" = 1)
-#levels(data$marital)
 
+knitr::kable(sort(Marital.Weights), col.names = c("Weight"), caption = "Table Showing Weightings of Martial Status")
+```
 
+\
+
+```{r echo=FALSE}
 # Creating The weights for Age feature
 age.Weigths <- c("20-29" = 0, "30-39"= 0,  "40-49" = 1,  "50-60" = 2)
 
+knitr::kable(sort(age.Weigths), col.names = c("Weight"), caption = "Table Showing Weightings of Age")
+```
+
+------------------------------------------------------------------------
+
+```{r echo=FALSE}
 # Creating The weights for Housing feature
 housing.weights <- c("no" = 0, "yes" = 1)
-#levels(data$housing)
+knitr::kable(sort(housing.weights), col.names = c("Weight"), caption = "Table Showing Weightings of Mortgage")
+```
 
+\
+
+```{r echo=FALSE}
 # Creating The weights for loan feature
 loan.weights <- c("no" = 0, "yes" = 1)
-#levels(data$loan)
+knitr::kable(sort(loan.weights), col.names = c("Weight"), caption = "Table Showing Weightings of Loan")
+```
 
+------------------------------------------------------------------------
 
+## Balance Scoring
+
+-   Calculate Job Mean
+
+-   Analyze Balance
+
+-   Aggregate weights
+
+| Condition                   | Weight if True | Weight if False |
+|-----------------------------|----------------|-----------------|
+| Balance \< Job Mean Balance | 1              | 0               |
+| Balance \<= 100k            | 2              | 0               |
+| Balance \< 0                | 1              | 0               |
+
+```{r echo=FALSE}
 #Calculating mean for each job and creating a Matrix 
 mean.balance <- aggregate(balance ~ job, data = data, FUN = mean)
 job.mean.matrix<- matrix(mean.balance$balance, nrow = nlevels(data$job), ncol = 1)
 row.names(job.mean.matrix) <- levels(data$job)
 colnames(job.mean.matrix) <- "Mean Balance"
+
+mean.balance$balance <- round(mean.balance$balance, 0)
 
 
 # Applying Credit Rating Risk based on weights and criteria
@@ -56,9 +103,38 @@ data$creditRisk <- Job.Weights[data$job] +
   ifelse(data$balance < job.mean.matrix[data$job], 1, 0 ) + # Checking if an individuals balance is below the mean balance for their associated job
   ifelse(data$balance <= 100000/1000, 2, 0) + # Checking if an individual has a balance of below 100,000 . Divided by 1000 because data was normalized by 1000
   ifelse(data$balance < 0, 1, 0) # Checking if Individuals are in overdraft or not
+```
 
-summary(data$creditRisk)
+------------------------------------------------------------------------
 
+## Credit Risk Scoring
+
+| C          | Column Name       |
+|------------|-------------------|
+| Character  | job, age, marital |
+| Capacity   | loan              |
+| Capital    | balance           |
+| Collateral | mortgage          |
+
+$Character + Capacity + Capital + Collateral$
+
+-   Min - 0
+
+-   Max - 12
+
+------------------------------------------------------------------------
+
+## Risk Score Binning
+
+| Bin  | Value     |
+|------|-----------|
+| 0-2  | Very Low  |
+| 2-4  | Low       |
+| 4-6  | Medium    |
+| 6-8  | High      |
+| 8-12 | Very High |
+
+```{r echo=FALSE}
 # Binning
 score.range <- c(-Inf, 2, 4, 6, 8, 12) #creating ranges for different levels of binning 0-2 - Very low, 2-4 Low etc
 risk.labels <- c("very low", "low", "medium", "high", "very high") # Creating binning labels of "very low", "low", "medium", "high", "very high"
@@ -70,8 +146,11 @@ data$creditRiskBin <- cut(data$creditRisk, breaks = score.range, labels = risk.l
 
 #View(target.customers)
 summary(data$creditRiskBin)
+```
 
+------------------------------------------------------------------------
 
+```{r echo=FALSE}
 # Counting the frequency of each credit risk level
 risk.counts.pie <- table(data$creditRiskBin)
 pie.colors <- c("lightblue", "lightgreen", "lightyellow", "orange", "lightcoral")
@@ -79,3 +158,23 @@ pie(risk.counts.pie, labels = paste0(risk.labels, " (", round(100*risk.counts.pi
 legend("topright", legend = risk.labels, fill = pie.colors, cex = 0.8)
 title("Credit Risk Levels")
 ```
+
+------------------------------------------------------------------------
+
+## Very Low Score
+
+------------------------------------------------------------------------
+
+## Low Score
+
+------------------------------------------------------------------------
+
+## Medium Score
+
+------------------------------------------------------------------------
+
+## High Score
+
+------------------------------------------------------------------------
+
+## Very High Score
