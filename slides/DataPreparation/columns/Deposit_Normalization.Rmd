@@ -1,10 +1,37 @@
 ## Why Normalize?
 
-In order to have smaller values to work with and to preserve the mean of the data-set we decided to perform min-max normalization on the balance and deposit features of our data-set.
+In order to have smaller values to work with and to preserve the meaning of the data we decided to perform min-max normalization on the balance and deposit features of our data-set.
 
 ------------------------------------------------------------------------
+```{r echo=FALSE}
+bef.avgDepositPerJob <- setNames(
+  aggregate(
+    data$deposit, 
+    list(data$job), 
+    FUN = mean, 
+    na.rm = TRUE
+    ),
+    c("Job","Deposit")
+  )
+bef.avgDepositPerJob$Deposit <- round(bef.avgDepositPerJob$Deposit, 0)
 
-```{r echo = TRUE, eval=FALSE}
+color.palette <- c('rgb(31,219,180)', 'rgb(12,127,14)', 'rgb(44,160,44)', 'rgb(214,39,40)',
+                   'rgb(148,103,189)','rgb(140,86,75)', 'rgb(31,119,180)', 'rgb(127,127,127)',
+                   'rgb(188,189,34)', 'rgb(23,190,207)',
+                   'rgb(174,199,232)', 'rgb(255,187,120)')
+
+
+bef.barfig.dep <- plot_ly(bef.avgDepositPerJob, x = ~Job, y = ~Deposit, type = 'bar',
+                      textposition = 'auto',
+                      marker = list(color = color.palette))
+
+bef.barfig.dep <- bef.barfig.dep %>% layout(title = "Average Deposit by Job Before Normalization",
+                                    xaxis = list(title = ""),
+                                    yaxis = list(title = ""))
+#bef.barfig.dep
+```
+
+```{r echo = TRUE}
 
 min.deposit <- min(data$deposit, na.rm = T) # Setting Min Value
 max.deposit <- max(data$deposit, na.rm = T) # Setting Max value
@@ -26,9 +53,9 @@ data<- data %>%
 
 ------------------------------------------------------------------------
 
-```{r fig.height=24, fig.width=24,  fig.show="hold", out.width="45%"}
-#Before Normalization
-avgDepositPerJob <- setNames(
+```{r echo=FALSE}
+
+aft.avgDepositPerJob <- setNames(
   aggregate(
     data$deposit, 
     list(data$job), 
@@ -37,70 +64,39 @@ avgDepositPerJob <- setNames(
     ),
     c("Job","Deposit")
   )
-avgDepositPerJob$Deposit <- round(avgDepositPerJob$Deposit, 0)
+aft.avgDepositPerJob$Deposit <- round(aft.avgDepositPerJob$Deposit, 0)
 
-colors <- c("red", "blue", "green", "orange", "purple", "pink", "brown", "gray", "yellow", "cyan", "magenta", "darkgreen", "darkblue", "darkred")
-
-ggplot(avgDepositPerJob, aes(x = Job, y = Deposit, fill = Job)) +
-  geom_bar(stat = "identity") +
-  labs(x = "", y = "", title = "Mean Deposit by Job Before Normalization") +
-  theme(panel.background = element_blank(),panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 40),
-        axis.text.y = element_text(size = 40),
-        axis.title.x.top = element_text(size = 40),
-        legend.text = element_text(size = 50),  # Adjust legend text size
-        legend.title = element_text(size = 50) ) +
-  scale_fill_manual(values = colors)
-
-#Normalization
-min.deposit <- min(data$deposit, na.rm = T) # Setting Min Value
-max.deposit <- max(data$deposit, na.rm = T) # Setting Max value
-
-new.min <- 0 # Setting new min value for normalized Data to 0
-# Orginal Max - 479
-new.max <- 199 # Setting new max value for normalized Data to 199
-
-data<- data %>% 
-  # Mutate function essentially  alters the content of a column.
-  # In this case we Altering the deposit column to updated with min max normalized values 
-  mutate(deposit = as.integer(
-    (deposit - min.deposit)/(max.deposit - min.deposit ) * (new.max - new.min) + new.min
-    #Formula for Min Max = normalized_value = (value - minimum_value) / (maximum_value - minimum_value) * (new_max - new_min) + new_min
-  )
-  )
-
-#After Normalization
-avgDepositPerJob <- setNames(
-  aggregate(
-    data$deposit, 
-    list(data$job), 
-    FUN = mean, 
-    na.rm = TRUE
-    ),
-    c("Job","Deposit")
-  )
-avgDepositPerJob$Deposit <- round(avgDepositPerJob$Deposit, 0)
+color.palette <- c('rgb(31,219,180)', 'rgb(12,127,14)', 'rgb(44,160,44)', 'rgb(214,39,40)',
+                   'rgb(148,103,189)','rgb(140,86,75)', 'rgb(31,119,180)', 'rgb(127,127,127)',
+                   'rgb(188,189,34)', 'rgb(23,190,207)',
+                   'rgb(174,199,232)', 'rgb(255,187,120)')
 
 
+aft.barfig.dep <- plot_ly(aft.avgDepositPerJob, x = ~Job, y = ~Deposit, type = 'bar',
+                      textposition = 'auto',
+                      marker = list(color = color.palette))
 
-# Assuming "avgBalancePerJob" is your data frame with columns "Job" and "Balance"
-
-# Define the colors for each job category
-
-
-ggplot(avgDepositPerJob, aes(x = Job, y = Deposit, fill = Job)) +
-  geom_bar(stat = "identity") +
-  labs(x = "", y = "", title = "Mean Deposit by Job After Normalization") +
-  theme(panel.background = element_blank(),panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 40),
-        axis.text.y = element_text(size = 40),
-        axis.title.x.top = element_text(size = 40),
-        legend.text = element_text(size = 50),  # Adjust legend text size
-        legend.title = element_text(size = 50) ) +
-  scale_fill_manual(values = colors)
+aft.barfig.dep <- aft.barfig.dep %>% layout(title = "Average Deposit by Job After Normalization",
+                                    xaxis = list(title = ""),
+                                    yaxis = list(title = ""))
+#aft.barfig.dep
 
 ```
+::: {style="display: flex;"}
+<div>
 
+```{r echo=FALSE, fig.height=5, fig.width=5}
+bef.barfig.dep
+```
+
+</div>
+
+<div>
+
+```{r echo=FALSE, fig.height=5, fig.width=5}
+aft.barfig.dep
+```
+
+</div>
+:::
 ------------------------------------------------------------------------

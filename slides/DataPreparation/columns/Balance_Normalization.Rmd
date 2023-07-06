@@ -2,13 +2,41 @@
 
 ### Normalizing Balance
 
-```{r echo = TRUE, eval=FALSE}
+```{r}
+bef.avgBalancePerJob <- setNames(
+  aggregate(
+    data$balance, 
+    list(data$job), 
+    FUN = mean, 
+    na.rm = TRUE
+    ),
+    c("Job","Balance")
+  )
+bef.avgBalancePerJob$Balance <- round(bef.avgBalancePerJob$Balance, 0)
+
+color.palette <- c('rgb(31,219,180)', 'rgb(12,127,14)', 'rgb(44,160,44)', 'rgb(214,39,40)',
+                   'rgb(148,103,189)','rgb(140,86,75)', 'rgb(31,119,180)', 'rgb(127,127,127)',
+                   'rgb(188,189,34)', 'rgb(23,190,207)',
+                   'rgb(174,199,232)', 'rgb(255,187,120)')
 
 
+bef.barfig.bal <- plot_ly(bef.avgBalancePerJob, x = ~Job, y = ~Balance, type = 'bar',
+                      textposition = 'auto',
+                      marker = list(color = color.palette))
+
+bef.barfig.bal <- bef.barfig.bal %>% layout(title = "Average Balance by Job Before Normalization",
+                                    xaxis = list(title = ""),
+                                    yaxis = list(title = ""))
+#bef.barfig.bal
+```
+
+```{r echo = TRUE}
+
+# Setting Min and Max values
 min.balance <- min(data$balance, na.rm = T) # Setting Min Value
 max.balance <- max(data$balance, na.rm = T) # Setting Max value
 
-# Original 252
+# Setting New min and Max values
 new.min <- as.integer(min.balance/1000) # Setting new min value for normalized Data to -112
 new.max <- as.integer(max.balance/1000) # Setting new max value for normalized Data to 669
 
@@ -25,48 +53,7 @@ data<- data %>%
 
 ------------------------------------------------------------------------
 
-```{r fig.height=24, fig.width=24, figures-side, fig.show="hold", out.width="45%"}
-#Before Normalization
-avgBalancePerJob <- setNames(
-  aggregate(
-    data$balance, 
-    list(data$job), 
-    FUN = mean, 
-    na.rm = TRUE
-    ),
-    c("Job","Balance")
-  )
-avgBalancePerJob$Balance <- round(avgBalancePerJob$Balance, 0)
-
-colors <- c("red", "blue", "green", "orange", "purple", "pink", "brown", "gray", "yellow", "cyan", "magenta", "darkgreen", "darkblue", "darkred")
-
-ggplot(avgBalancePerJob, aes(x = Job, y = Balance, fill = Job)) +
-  geom_bar(stat = "identity") +
-  labs(x = "", y = "", title = "Mean by Job After Normalization") +
-  theme(panel.background = element_blank(),panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 40),
-        axis.text.y = element_text(size = 40),
-        axis.title.x.top = element_text(size = 40),
-        legend.text = element_text(size = 50),  # Adjust legend text size
-        legend.title = element_text(size = 50) ) +
-  scale_fill_manual(values = colors)
-
-#Normalization
-min.balance <- min(data$balance, na.rm = T) # Setting Min Value
-max.balance <- max(data$balance, na.rm = T) # Setting Max value
-
-# Original 252
-new.min <- as.integer(min.balance/1000) # Setting new min value for normalized Data to -112
-new.max <- as.integer(max.balance/1000) # Setting new max value for normalized Data to 669
-
-
-#Normalization Based on Formula
-data<- data %>% 
-  mutate(balance = as.integer(
-    ((balance - min.balance)/(max.balance - min.balance ) * (new.max - new.min) + new.min)
-    )
-  )
+```{r}
 
 #After Normalization
 avgBalancePerJob <- setNames(
@@ -82,26 +69,38 @@ avgBalancePerJob$Balance <- round(avgBalancePerJob$Balance, 0)
 
 
 
-# Assuming "avgBalancePerJob" is your data frame with columns "Job" and "Balance"
+color.palette <- c('rgb(31,219,180)', 'rgb(12,127,14)', 'rgb(44,160,44)', 'rgb(214,39,40)',
+                   'rgb(148,103,189)','rgb(140,86,75)', 'rgb(31,119,180)', 'rgb(127,127,127)',
+                   'rgb(188,189,34)', 'rgb(23,190,207)',
+                   'rgb(174,199,232)', 'rgb(255,187,120)')
 
-# Define the colors for each job category
 
+aft.barfig.bal <- plot_ly(avgBalancePerJob, x = ~Job, y = ~Balance, type = 'bar',
+                      textposition = 'auto',
+                      marker = list(color = color.palette))
 
-ggplot(avgBalancePerJob, aes(x = Job, y = Balance, fill = Job)) +
-  geom_bar(stat = "identity") +
-  labs(x = "", y = "", title = "Mean by Job After Normalization") +
-  theme(panel.background = element_blank(),
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1,size = 24)) +
-  scale_fill_manual(values = colors)
+aft.barfig.bal <- aft.barfig.bal %>% layout(title = "Average Balance by Job After Normalization",
+                                    xaxis = list(title = ""),
+                                    yaxis = list(title = ""))
+
+#aft.barfig.bal
 
 ```
+::: {style="display: flex;"}
+<div>
 
-\
-
-```{r}
-#barplot(table(data$job), xlab = "", ylab = "", main = "Job Count", las=2, cex.names = 0.8)
+```{r echo=FALSE, fig.height=5, fig.width=5}
+bef.barfig.bal
 ```
 
+</div>
+
+<div>
+
+```{r echo=FALSE, fig.height=5, fig.width=5}
+aft.barfig.bal
+```
+
+</div>
+:::
 ------------------------------------------------------------------------
