@@ -1,6 +1,6 @@
 ## Duration Preparation
 
-This feature measures the time spent on the call during the last contact with the customer, expressed in seconds.
+This feature shows the time spent (seconds) on the last call.
 
 Measurement: Quantitative (Interval)
 
@@ -11,23 +11,22 @@ Data type: Numeric
 str(data$duration)
 ```
 
-------------------------------------------------------------------------
-
-### Summary of Duration
-
 ```{r echo=TRUE}
 #view the structure of the duration column 
 summary(data$duration)
 ```
 
--   Pre clean Checks
+------------------------------------------------------------------------
+
+### Summary of Duration
+
+-   Pre-clean Checks
 
     ```{r echo=TRUE}
     #find the sum of NA values 
     dur_na_sum <- sum(is.na(data$duration))
-    ```
+    print(dur_na_sum)
 
-    ```{r echo=TRUE}
     #find the sum of null values 
     dur_null_sum <- sum(is.null(data$duration))
     ```
@@ -39,37 +38,60 @@ summary(data$duration)
 -   conversion from SECONDS to MINUTES
 
     ```{r echo=TRUE}
-    install.packages("lubridate")
-    library('lubridate')
+    #install.packages("lubridate")
+   
     #convert from seconds to minutes
     data$duration_temp <- round(as.duration(data$duration) / dminutes(1))
 
     data$duration <- round(as.duration(data$duration) / dminutes(1))
+    print(dur_null_sum)
     ```
 
 ------------------------------------------------------------------------
 
 ## Visualization of Duration
 
--   Histogram
+```{r echo=FALSE}
+Duration <- data$duration
+duration.hist <- hist(Duration, main = 'Histogram of Duration (before cleaning)')
 
-    -   used to show distribution blah blah
-
-```{r echo=TRUE}
-hist(data$duration)
 ```
 
 ------------------------------------------------------------------------
 
 ## Visualization of Duration
 
--   Density Plot
+```{r echo=FALSE}
 
-    -   used to
+#density plot for alternate visualization
+Duration <- data$duration
+d <- density(Duration,na.rm = T)
+plot(d,frame=FALSE, col = "Blue",main = 'Density plot of Duration (before cleaning)')
+```
 
-    -   alternative visualization
+------------------------------------------------------------------------
 
-        ```{r echo=TRUE}
-        d <- density(data$duration,na.rm = T)
-        plot(d,frame=FALSE, col = "Blue",main="Duration")
-        ```
+## Visualization of Duration
+
+-   conversion from SECONDS to MINUTES
+
+```{r echo=FALSE}
+
+data$duration <- round(as.duration(data$duration) / dminutes(1))
+
+data$duration <- ifelse(data$duration>12, mean(data$duration), data$duration)
+
+Duration <- data$duration
+duration.hist <- hist(Duration,main = 'Histogram of Duration (after cleaning and conversion)')
+```
+
+------------------------------------------------------------------------
+
+## Visualization of Duration
+
+```{r echo=FALSE}
+d <- density(data$duration,na.rm = T)
+plot(d,frame=FALSE, col = "Blue",main = 'Density plot of Duration (after cleaning and conversion)')
+```
+
+------------------------------------------------------------------------

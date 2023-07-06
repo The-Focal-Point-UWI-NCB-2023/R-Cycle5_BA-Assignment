@@ -1,12 +1,19 @@
-### Slide Header 1
+<h5>Checking For At-most Three Unique Values In Column</h5>
 
 ```{r echo=TRUE}
-# Code Here
-print("Test Output")
+length(unique(data$marital)) #= 3
+```
+
+<h5>Checking For Spaces</h5>
+
+```{r echo=TRUE}
+sum(data$marital == "")
 ```
 
 ------------------------------------------------------------------------
 
-### Slide Header 2
+<h5>Checking For Null Values</h5>
+```{r echo=TRUE}
+sum(is.na(data$marital))
+```
 
--   Horizontal Rules Separate Slides

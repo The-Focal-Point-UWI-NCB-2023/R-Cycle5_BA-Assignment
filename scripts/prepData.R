@@ -67,3 +67,4 @@ source(paste(path,"Normalization-Deposit.R", sep=""))
 # boxplotStats <- boxplot.stats(data$balance)
 # sum_outliers <- length(boxplotStats$out)
 # sum_outliers
+

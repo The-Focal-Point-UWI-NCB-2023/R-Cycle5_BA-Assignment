@@ -15,39 +15,35 @@ str(data$month)
 
 ### Summary of Month Data
 
-```{r echo=TRUE}
-#view the structure of the duration column  
-summary(data$month)
-```
-
--   
-
 -   Pre-clean Checks
 
-    ```{r echo=TRUE}
-    #find the sum of NA values  
-    month_na_sum <- sum(is.na(data$month))
-    print(month_na_sum)
-    ```
+```{r echo=TRUE}
+#find the sum of NA values  
+month_na_sum <- sum(is.na(data$month))
+print(month_na_sum)
+```
 
-    ```{r echo=TRUE}
-    #find the sum of null values  
-    month_null_sum <- sum(is.null(data$month))
-    print(month_null_sum)
-    ```
+```{r echo=TRUE}
+#find the sum of null values  
+month_null_sum <- sum(is.null(data$month))
+print(month_null_sum)
+```
 
-    ------------------------------------------------------------------------
+------------------------------------------------------------------------
 
-    ### Summary of Month Data
+### Summary of Month Data
 
-    ```{r echo=TRUE}
-    #create a list of valid months
-    valid_months <- tolower(month.name)
+```{r echo=TRUE}
+#create a list of valid months
+valid_months <- tolower(month.name)
+print(valid_months)
 
-    #check if any months are invalid
-    invalid_months <- !(tolower(data$month) %in% valid_months)
-    num_of_invalid <- sum(invalid_months)
-    ```
+#check if any months are invalid
+invalid_months <- !(tolower(data$month) %in% valid_months)
+num_of_invalid <- sum(invalid_months)
+print(num_of_invalid)
+
+```
 
 ------------------------------------------------------------------------
 
@@ -55,27 +51,15 @@ summary(data$month)
 
 -   Bar graph
 
-    -    used to show distribution blah blah
-
-```{r echo=TRUE}
-library(ggplot2)
-sum_deposits_per_month <- aggregate(deposit ~ month, data, sum)
-
-ggplot(sum_deposits_per_month, aes(x = month, y = deposit)) +
-  geom_bar(stat = "identity", fill = "blue") +
-  xlab("Months") +
-  ylab("Amount of Deposits") +
-  ggtitle("Amount of Deposits per month")
-```
+    -   used to show distribution data
+    -   The following shows the total number of deposits made for each month
 
 ------------------------------------------------------------------------
 
-## Visualization of Months
-
-```{r echo=TRUE}
-library(ggplot2)
+```{r echo=FALSE}
+options(digits=4)
 sum_deposits_per_month <- aggregate(deposit ~ month, data, sum)
-
+sum_deposits_per_month$deposit <- as.integer(sum_deposits_per_month$deposit)
 ggplot(sum_deposits_per_month, aes(x = month, y = deposit, label=deposit)) +
   geom_bar(stat = "identity", fill = "blue") +
   geom_bar(data = subset(sum_deposits_per_month, deposit == max(deposit)), fill = "red", stat = "identity")+
@@ -85,3 +69,5 @@ ggplot(sum_deposits_per_month, aes(x = month, y = deposit, label=deposit)) +
   ggtitle("Amount of Deposits per month") +
   theme(plot.title = element_text(hjust = 0.5))
 ```
+
+------------------------------------------------------------------------

@@ -26,15 +26,15 @@ if (packageVersion('revealjs') <= '0.8') {
 }
 ```
 
-```{r echo=FALSE, results='hide'}
+```{r echo=FALSE, results='hide', message=FALSE}
 library(stringr)
 library(ggplot2)
 library(lubridate)
 library(dplyr)
 library(scales)
 library(corrplot)
-library(stringr)  
 library(plotly)
+library(knitr)
 options("scipen"=100, digits = 22)
 ```
 
@@ -50,15 +50,35 @@ data <- read.csv(file='./dataset.csv', stringsAsFactors = TRUE)
 ```
 
 ```{r, cache=TRUE}
-barplot(data$balance)
+str(data)
 ```
 
 # Data Preparation & Cleaning
+
+## What is Data Preparation & Cleaning?
+
+-   Ensuring data integrity, accurate reports
+
+-   Fixing missing values, outliers, noise
 
 ```{r child='./slides/DataPreparation/DataPreparation.Rmd', cache=TRUE}
 ```
 
 # Data Analysis
 
+-   Observation
+
+-   Insights
+
 ```{r child='./slides/DataAnalysis/DataAnalysis.Rmd', cache=TRUE}
+```
+
+# Credit Risk Score
+
+-   If the Bank wanted to launch a new loan product to target persons who may be considered to have the least credit risk, propose a metric to determine these persons. Use at least 3 features to justify/select your target profile. Example: RefNum \< X AND Married=T AND education=="Tertiary" Risk=Low.
+-   Be prepared to explain why you made the decision on the variables used for determining the best person to target. This may be helped by investigating what banks generally use.
+
+------------------------------------------------------------------------
+
+```{r child='./slides/DataAnalysis/analytics/h_creditRisk.Rmd'}
 ```

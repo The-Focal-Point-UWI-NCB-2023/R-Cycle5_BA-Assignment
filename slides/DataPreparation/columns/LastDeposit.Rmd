@@ -1,8 +1,6 @@
-### Last Deposit
+- Data Type: Quantitative
 
-Data Type: Quantitative
-
-Measurement: Interval
+- Measurement: Interval
 
 ```{r echo=TRUE}
 #Convert to characters so that we can convert it to date

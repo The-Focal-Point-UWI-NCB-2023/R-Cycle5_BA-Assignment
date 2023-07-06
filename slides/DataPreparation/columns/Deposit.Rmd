@@ -1,8 +1,6 @@
-### Deposit Preparation
+- Data Type: Quantitative
 
-Data Type: Quantitative
-
-Measurement: Ratio
+- Measurement: Ratio
 
 ```{r echo=FALSE}
 str(data$deposit)

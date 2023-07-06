@@ -43,6 +43,6 @@ data$age <- as.factor(ifelse(
 
 # Visualization (Before|After)
 hist(data$temp, main = "Age Before Discritization")
-barplot(table(data$age), main = "Age After Discritization")
+hist(data$temp, main = "Age Before Discritization")
 
 data$temp <- NULL

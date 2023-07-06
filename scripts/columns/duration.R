@@ -1,4 +1,3 @@
-
 #view the structure of the duration column
 str(data$duration)
 
@@ -13,15 +12,23 @@ dur_null_sum <- sum(is.null(data$duration))
 
 #shows the distribution
 ##chose histogram because of numeric values 
-duration.hist <- hist(data$duration)
+duration.hist <- hist(data$duration, main = 'Histogram of Duration (before cleaning)')
 
 #density plot for alternate visualization
 d <- density(data$duration,na.rm = T)
-plot(d,frame=FALSE, col = "Blue",main="Duration")
-
-avg_duartion <- mean(data$duration)
+plot(d,frame=FALSE, col = "Blue",main = 'Density plot of Duration (before cleaning)')
 
 #convert from seconds to minutes
-data$duration_temp <- round(as.duration(data$duration) / dminutes(1))
-
 data$duration <- round(as.duration(data$duration) / dminutes(1))
+
+data$duration <- ifelse(data$duration>12, mean(data$duration), data$duration)
+duration.hist <- hist(data$duration,main = 'Density plot of Duration (after cleaning and conversion)')
+#density plot for alternate visualization
+d <- density(data$duration,na.rm = T)
+plot(d,frame=FALSE, col = "Blue",main = 'Histogram of Duration (after cleaning and conversion)')
+
+avg_duration <- mean(data$duration)
+
+
+
+
