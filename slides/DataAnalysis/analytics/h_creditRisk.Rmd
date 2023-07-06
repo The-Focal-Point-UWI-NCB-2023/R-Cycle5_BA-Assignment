@@ -66,17 +66,67 @@ data$creditRiskBin <- cut(data$creditRisk, breaks = score.range, labels = risk.l
 
 
 #Creating a new data frame with reference number and credit risk filtering customers with only low and very low risks
-target.customers <- data %>% select(RefNum, creditRiskBin) %>% 
-  filter(creditRiskBin == "very low" | creditRiskBin == "low")
+#target.customers <- data %>% select(RefNum, creditRiskBin) %>% 
+#  filter(creditRiskBin == "very low" | creditRiskBin == "low")
 
-View(target.customers)
+#View(target.customers)
 summary(data$creditRiskBin)
 
 ```
 
+Weights Of Features
+------------------------------------------------------------------------
+
+| Feature | Categories     | Weights |
+|---------|----------------|---------|
+| Job     | admin.         | 1       |
+|         | blue-collar    | 1       |
+|         | entrepreneur   | 2       |
+|         | housemaid      | 1       |
+|         | management     | 0       |
+|         | retired        | 3       |
+|         | self-employed  | 2       |
+|         | services       | 1       |
+|         | student        | 3       |
+|         | technician     | 1       |
+|         | unemployed     | 3       |
+------------------------------------------------------------------------
+
+
+| Feature | Categories     | Weights |
+|---------|----------------|---------|
+| Marital | single         | 1       |
+|         | married        | 0       |
+|         | divorced       | 1       |
+| Age     | 20-29          | 0       |
+|         | 30-39          | 0       |
+|         | 40-49          | 1       |
+|         | 50-60          | 2       |
+------------------------------------------------------------------------
+
+| Feature | Categories     | Weights |
+|---------|----------------|---------|
+| Housing | no             | 0       |
+|         | yes            | 1       |
+| Loan    | no             | 0       |
+|         | yes            | 1       |
+------------------------------------------------------------------------
+
+```{r echo=FALSE}
+# Counting the frequency of each credit risk level
+risk.counts.pie <- table(data$creditRiskBin)
+pie.colors <- c("lightblue", "lightgreen", "lightyellow", "orange", "lightcoral")
+pie(risk.counts.pie, labels = paste0(risk.labels, " (", round(100*risk.counts.pie/sum(risk.counts.pie), 0), "%)"), col = pie.colors)
+legend("topright", legend = risk.labels, fill = pie.colors, cex = 0.8)
+title("Credit Risk Levels")
+```
 
 ------------------------------------------------------------------------
 
 
-------------------------------------------------------------------------
+
+
+
+
+
 
