@@ -44,8 +44,3 @@ graphical.df$Percentage <- paste0(round
     </div>
 
 ------------------------------------------------------------------------
-
--   Most Married Customers are good with money management.
--   Most Married Customers are not in overdraft.
-
-------------------------------------------------------------------------
