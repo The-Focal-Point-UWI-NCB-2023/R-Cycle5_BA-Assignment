@@ -1,19 +1,34 @@
-<h5>Checking For At-most Three Unique Values In Column</h5>
+## Marital
 
-```{r echo=TRUE}
-length(unique(data$marital)) #= 3
-```
+This feature indicates the Marital status of an individual
 
-<h5>Checking For Spaces</h5>
+Measurement: Quantitative (Categorical)
 
-```{r echo=TRUE}
-sum(data$marital == "")
+Data type: Factor
+
+```{r}
+unique(data$marital)
+
 ```
 
 ------------------------------------------------------------------------
 
-<h5>Checking For Null Values</h5>
+## Preparing Marital
+
+<h5>Checking For Missing Spaces and Na Values</h5>
+
 ```{r echo=TRUE}
+sum(data$marital == "")
 sum(is.na(data$marital))
+```
+
+
+------------------------------------------------------------------------
+
+<h5>Summary of Marital</h5>
+
+```{r echo=TRUE}
+length(unique(data$marital)) 
+summary(data$marital)
 ```
 

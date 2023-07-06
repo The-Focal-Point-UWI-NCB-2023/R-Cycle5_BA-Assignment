@@ -2,11 +2,11 @@
 
 ## Summary - Housing
 
-<small> This feature indicates whether or not a person has a mortgage.</small>
+This feature indicates whether or not a person has a mortgage.
 
-<small> Measurement: Quantitative (Categorical) </small>
+Measurement: Quantitative (Categorical)
 
-<small> Data type: Factor </small>
+Data type: Factor
 
 ```{r echo=TRUE}
 unique(data$housing)
@@ -15,7 +15,7 @@ unique(data$housing)
 
 ------------------------------------------------------------------------
 
-## Summary - Housing
+## Housing Preparation 
 
 ```{r echo=TRUE}
 str(data$housing)
@@ -25,9 +25,9 @@ summary(data$housing)
 
 ------------------------------------------------------------------------
 
-## Cleaning 
+## Cleaning
 
-<small> We made the decision to clean these missing values through deletion </small>
+We made the decision to clean these missing values through deletion
 
 ```{r echo=TRUE}
 data <- data[data$housing != "",]

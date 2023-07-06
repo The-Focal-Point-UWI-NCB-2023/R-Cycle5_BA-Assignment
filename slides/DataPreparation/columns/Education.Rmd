@@ -29,26 +29,30 @@ summary(data$education)
 ```
 <small> Calculate the average balance associated with each level of education </small>
 
-```{r echo=FALSE, fig.align='center', fig.height=5, fig.width=7, message=FALSE, warning=FALSE}
-avg_balance <- data %>%
-  filter(education != "") %>%
-  group_by(education) %>%
-  summarize(avg_balance = mean(balance, na.rm = TRUE))
+-   <div>
 
-colors <- c("blue", "green", "red")
-plot <- plot_ly(data = avg_balance, x = ~education, y = ~avg_balance, type = "bar",
-                marker = list(color = colors),
-                hovertemplate = paste("Education: %{x}<br>",
-                                      "Average Balance: %{y}"))
+    ```{r echo=FALSE, fig.align='center', fig.height=5, fig.width=7, message=FALSE, warning=FALSE}
+    avg_balance <- data %>%
+      filter(education != "") %>%
+      group_by(education) %>%
+      summarize(avg_balance = mean(balance, na.rm = TRUE))
 
-layout <- list(title = "Average Balance by Education",
-               xaxis = list(title = "Education"),
-               yaxis = list(title = "Average Balance"))
+    colors <- c("blue", "green", "red")
+    plot <- plot_ly(data = avg_balance, x = ~education, y = ~avg_balance, type = "bar",
+                    marker = list(color = colors),
+                    hovertemplate = paste("Education: %{x}<br>",
+                                          "Average Balance: %{y}"))
 
-plot <- plot %>% layout(layout)
+    layout <- list(title = "Average Balance by Education",
+                   xaxis = list(title = "Education"),
+                   yaxis = list(title = "Average Balance"))
 
-plot
-```
+    plot <- plot %>% layout(layout)
+
+    plot
+    ```
+
+    </div>
 
 ------------------------------------------------------------------------
 
@@ -91,4 +95,3 @@ summary(data$education)
 ```
 
 ------------------------------------------------------------------------
-
