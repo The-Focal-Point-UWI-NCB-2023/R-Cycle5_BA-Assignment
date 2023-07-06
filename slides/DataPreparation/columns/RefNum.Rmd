@@ -1,10 +1,16 @@
--   Data Type: Qualitative
+------------------------------------------------------------------------
 
--   Measurement: Nominal
+### RefNum
 
--   Unique ID number
+- This feature represents a unique identifier for each customer.
 
--   **CAN'T** remove, needed by bank
+- Data Type: Qualitative
+
+- Measurement: Nominal
+
+- Unique ID number
+
+- **CAN'T** remove, needed by bank
 
 ```{r echo=TRUE}
 str(data$RefNum)

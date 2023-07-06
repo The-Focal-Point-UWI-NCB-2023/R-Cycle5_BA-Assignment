@@ -1,24 +1,28 @@
 ------------------------------------------------------------------------
 
--   Data Type: Quantitative
+### Day
 
--   Measurement: Interval
+- This feature represents the last deposit day of the month for the customer. 
+
+- Data Type: Quantitative
+
+- Measurement: Interval
 
 ------------------------------------------------------------------------
 
-Checking For Null Elements
+#### Checking For Null Elements
 ```{r echo=TRUE}
 empty_rows <- sum(is.na(data$day))
 
 ``` 
 
-Checking For Spaces
+#### Checking For Spaces
 ```{r echo=TRUE}
 space_in_row <- grepl("\\s", data$day)
 
 ```
 
-Checking For Non-Numeric Values
+#### Checking For Non-Numeric Values
 ```{r echo=TRUE}
 non.numeric <- any(!is.numeric(data$day))
 
@@ -26,7 +30,7 @@ non.numeric <- any(!is.numeric(data$day))
 
 ------------------------------------------------------------------------
 
-## Checking if A Day is Invalid  
+#### Checking if A Day is Invalid  
 ```{r echo=TRUE}
 months = 1:12
 names(months) = month.name

@@ -1,10 +1,16 @@
--   Data Type: Qualitative
+------------------------------------------------------------------------
 
--   Measurement: Categorical
+### Job
 
--   11 Unique Values
+- This feature represents the type of job held by the customer.
 
--   Large amount of blue-collar jobs
+- Data Type: Qualitative
+
+- Measurement: Categorical
+
+- 11 Unique Values
+
+- Large amount of blue-collar jobs
 
 ------------------------------------------------------------------------
 

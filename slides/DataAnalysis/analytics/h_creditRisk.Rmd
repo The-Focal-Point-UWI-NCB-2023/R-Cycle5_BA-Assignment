@@ -21,15 +21,15 @@ knitr::include_graphics("./images/The_5_Cs_of_Credit-1.webp")
 
 -   Lower Score = Better [ 0 ]
 
--   Higher Score = Worse [ 12 ]
+-   Higher Score = Worse [ 10 ]
 
 ------------------------------------------------------------------------
 
 ```{r echo=FALSE}
 # Creating The weights for Job feature
-Job.Weights <- c("admin" = 1, "blue-collar" = 1, "entrepeneur" = 2, "housemaid" = 1,
-                 "management" = 0, "retired" = 3,   "self-employed" = 2, "services" = 1, 
-                 "student" = 3,"technician" = 1, "unemployed" = 3)
+Job.Weights <- c("admin" = 2, "blue-collar" = 2, "entrepeneur" = 1, "housemaid" = 2,
+                 "management" = 0, "retired" = 3,   "self-employed" = 1, "services" = 2, 
+                 "student" = 3,"technician" = 2, "unemployed" = 3)
 
 knitr::kable(sort(Job.Weights), col.names = c("Weight"), caption = "Table Showing Weightings of Jobs")
 ```
@@ -42,8 +42,6 @@ Marital.Weights <- c("single" = 1, "married" = 0, "divorced" = 1)
 
 knitr::kable(sort(Marital.Weights), col.names = c("Weight"), caption = "Table Showing Weightings of Martial Status")
 ```
-
-\
 
 ```{r echo=FALSE}
 # Creating The weights for Age feature
@@ -58,9 +56,8 @@ knitr::kable(sort(age.Weigths), col.names = c("Weight"), caption = "Table Showin
 # Creating The weights for Housing feature
 housing.weights <- c("no" = 0, "yes" = 1)
 knitr::kable(sort(housing.weights), col.names = c("Weight"), caption = "Table Showing Weightings of Mortgage")
-```
 
-\
+```
 
 ```{r echo=FALSE}
 # Creating The weights for loan feature
@@ -120,7 +117,7 @@ $Character + Capacity + Capital + Collateral$
 
 -   Min - 0
 
--   Max - 12
+-   Max - 10
 
 ------------------------------------------------------------------------
 
@@ -132,11 +129,11 @@ $Character + Capacity + Capital + Collateral$
 | 2-4  | Low       |
 | 4-6  | Medium    |
 | 6-8  | High      |
-| 8-12 | Very High |
+| 8-10 | Very High |
 
 ```{r echo=FALSE}
 # Binning
-score.range <- c(-Inf, 2, 4, 6, 8, 12) #creating ranges for different levels of binning 0-2 - Very low, 2-4 Low etc
+score.range <- c(-Inf, 2, 4, 6, 8, 10) #creating ranges for different levels of binning 0-2 - Very low, 2-4 Low etc
 risk.labels <- c("very low", "low", "medium", "high", "very high") # Creating binning labels of "very low", "low", "medium", "high", "very high"
 data$creditRiskBin <- cut(data$creditRisk, breaks = score.range, labels = risk.labels, ) # Binning the data based on the range and labels
 
@@ -163,18 +160,51 @@ title("Credit Risk Levels")
 
 ## Very Low Score
 
+```{r echo=FALSE}
+data$deposit <- round(data$deposit)
+data <- data[order(data$creditRisk), ]
+score <- data %>% select(age, job, marital, housing, loan, deposit, balance) %>% 
+                    filter(data$creditRiskBin == "very low")
+score
+```
+
 ------------------------------------------------------------------------
 
 ## Low Score
+
+```{r echo=FALSE}
+score <- data %>% select(age, job, marital, housing, loan, deposit, balance) %>% 
+                    filter(data$creditRiskBin == "low")
+score
+```
 
 ------------------------------------------------------------------------
 
 ## Medium Score
 
+```{r echo=FALSE}
+score <- data %>% select(age, job, marital, housing, loan, deposit, balance) %>% 
+                    filter(data$creditRiskBin == "medium")
+score
+
+```
+
 ------------------------------------------------------------------------
 
 ## High Score
 
+```{r echo=FALSE}
+score <- data %>% select(age, job, marital, housing, loan, deposit, balance) %>% 
+                    filter(data$creditRiskBin == "medium")
+score
+```
+
 ------------------------------------------------------------------------
 
 ## Very High Score
+
+```{r}
+score <- data %>% select(age, job, marital, housing, loan, deposit, balance) %>% 
+                    filter(data$creditRiskBin == "very high")
+score
+```

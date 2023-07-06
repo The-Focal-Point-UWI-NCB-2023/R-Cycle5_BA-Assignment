@@ -1,3 +1,7 @@
+------------------------------------------------------------------------
+
+### Balance
+
 - This feature represents the amount deposited by the customer in the last transaction.
 
 - Data Type: Quantitative
@@ -15,6 +19,8 @@ data$old.balance <- data$balance
 ```
 
 ------------------------------------------------------------------------
+
+### Cleaning of Balance
 
 ```{r echo=TRUE}
 avg.job.balance <- aggregate(balance ~ job, data, mean, na.rm = TRUE)
