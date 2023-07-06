@@ -2,11 +2,11 @@
 
 ## Summary - Housing
 
-This feature indicates whether or not a person has a mortgage.
+-   This feature indicates whether or not a person has a mortgage.
 
-Measurement: Quantitative (Categorical)
+-   Measurement: Quantitative (Categorical)
 
-Data type: Factor
+-   Data type: Factor
 
 ```{r echo=TRUE}
 unique(data$housing)

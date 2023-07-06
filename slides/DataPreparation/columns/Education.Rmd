@@ -1,8 +1,10 @@
-## Education Preparation
+## Education
 
 -   This feature represents the highest level of education attained by each entity.
 
--   It has 3 factors, namely: Primary, Secondary and Tertiary.
+-   Measurement : Categorical
+
+-   Data Type: Factor
 
 ```{r echo=TRUE}
     unique(data$education)
@@ -10,34 +12,29 @@
 
 ## Summary
 
-Measurement : Categorical
+-   The first step in Preparing this feature was to observe the data.
 
-Data Type: Factor
+-   <div>
 
-The first step in Preparing this feature was to observe the data.
+    ```{r echo=TRUE}
+    summary(data$education)
+    ```
 
-```{r echo=TRUE}
-summary(data$education)
-```
+    </div>
 
 ------------------------------------------------------------------------
 
 ### Education Cleaning - Handling Missing Data
 
-```{=html}
-<small> The decision was made to derive the missing data based on information deduced from our data-set. </small>
-```
-<small> Calculate the average balance associated with each level of education </small>
+The decision was made to derive the missing data based on information deduced from our data-set.
 
--   <div>
-
-    ```{r echo=FALSE, fig.align='center', fig.height=5, fig.width=7, message=FALSE, warning=FALSE}
+```{r fig.align='center', fig.height=5, fig.width=7, message=FALSE, warning=FALSE, include=FALSE}
     avg_balance <- data %>%
       filter(education != "") %>%
       group_by(education) %>%
       summarize(avg_balance = mean(balance, na.rm = TRUE))
 
-    colors <- c("blue", "green", "red")
+    colors <- c("blue", "green", "grey")
     plot <- plot_ly(data = avg_balance, x = ~education, y = ~avg_balance, type = "bar",
                     marker = list(color = colors),
                     hovertemplate = paste("Education: %{x}<br>",
@@ -49,14 +46,8 @@ summary(data$education)
 
     plot <- plot %>% layout(layout)
 
-    plot
-    ```
-
-    </div>
-
-------------------------------------------------------------------------
-
-### Updating Missing Values
+    #plot
+```
 
 ```{r echo=FALSE, message=FALSE}
 avg_balance <- data %>%
@@ -93,5 +84,3 @@ data$education <- as.factor(tempdf$education)
 summary(data$education)
 
 ```
-
-------------------------------------------------------------------------
